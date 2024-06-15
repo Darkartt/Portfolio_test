@@ -535,17 +535,27 @@ section#experience .audit-list h3 {
 }
 
 .audit-entry[data-tooltip]:hover::after {
-    content: attr(data-tooltip);   /* Display the tooltip content */
+  .audit-entry[data-tooltip]::after { /* Combined tooltip style */
+    content: attr(data-tooltip);
+    background: black;
+    color: #00FF00;
+    padding: 8px 12px;
+    border-radius: 5px;
     position: absolute;
-    top: 100%;                  /* Position above the element */
-    left: 50%;                  /* Center horizontally */
-    transform: translateX(-50%); /* Adjust horizontal position */
-    background-color: #333;     /* Dark background color */
-    color: #fff;                /* White text color */
-    padding: 10px;             /* Add padding to the tooltip */
-    border-radius: 5px;         /* Rounded corners */
-    z-index: 10;                /* Make sure tooltip is on top */
-    white-space: nowrap;        /* Prevent tooltip from wrapping */
+    bottom: calc(100% + 15px); /* Increased spacing below the cell */
+    left: 50%;
+    transform: translateX(-50%); 
+    white-space: nowrap; 
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none; 
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+.audit-entry[data-tooltip]:hover::after { /* Show tooltip on hover */
+  opacity: 1;
+  bottom: calc(100% + 5px);
 }
 
 /* Grid Container (main-background) */
