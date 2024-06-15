@@ -8,6 +8,8 @@ body {
     background-color: black;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -31,6 +33,8 @@ main {
     padding: 20px;
     position: relative; /* Ensure main content is above the background */
     z-index: 1;
+    max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+    overflow-x: hidden; /* Hide any potential horizontal overflow */
 }
 
 footer {
@@ -44,7 +48,7 @@ footer {
 /* Background and Parallax */
 #background {
     background-image: url('./images/background-logo.png'); 
-    background-size: contain;
+    background-size: fixed;
 
     background-position: center;
     min-height: 100vh; 
@@ -711,16 +715,42 @@ section#experience .audit-list h3 {
   }
 
   .timeline-item {
-    width: 100%; /* Make timeline items full width on tablets */
+    max-width: 100%; /* Make timeline items full width on tablets */
     text-align: center; /* Center align text in timeline items */
     
   @media (max-width: 480px) {
     /* Further adjustments for phones */
     #background {
       background-attachment: scroll; 
-      background-size: auto 100%;   /* Or use 'auto' to maintain aspect ratio */
+      background-size: fixed;   /* Or use 'auto' to maintain aspect ratio */
     }
-
+    main {
+      grid-template-columns: 1fr; /* Single column for tablets */
+      width: 95%;
+    }
+  
+    /* Adjust font sizes for tablets */
+    h1,
+    h2,
+    h3 {
+      font-size: 28px;
+    }
+  
+    p,
+    li,
+    .audit-entry,
+    .service h3,
+    .form-group label {
+      font-size: 16px;
+    }
+  
+    .timeline {
+      max-width: 100%; /* Make timeline full width on tablets */
+    }
+  
+    .timeline-item {
+      max-width: 100%; /* Make timeline items full width on tablets */
+      text-align: center; /* Center align text in timeline items */
     #audit-table {
     max-width: 100%; /* Make the table full-width on phones */
     
