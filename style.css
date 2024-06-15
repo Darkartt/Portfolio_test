@@ -382,3 +382,170 @@ body.modal-open {
   margin-right: 10px; 
   vertical-align: middle; 
 }
+
+/* Table Styles */
+#audit-table {
+    width: 80%; 
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
+    text-align: center;
+}
+
+#audit-table th { /* Table headers */
+    background-color: #00FF00;
+    color: black;
+    padding: 10px;
+}
+
+#audit-table td {
+    padding: 10px;
+    border: 1px solid #00FF00; 
+    position: relative; /* For positioning tooltips */
+    transition: background-color 0.3s ease; /* Hover effect transition */
+    text-align: left;
+}
+
+#audit-table td:hover {
+    background-color: #111; /* Slightly darker background on hover */
+}
+
+/* Tooltip Styling */
+.audit-entry[data-tooltip]::after { /* Tooltip arrow */
+    content: '';
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.audit-entry[data-tooltip]::before { /* Tooltip content */
+    content: attr(data-tooltip);
+    background: black;
+    color: #00FF00;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: calc(100% + 10px); /* Position below the cell */
+    left: 50%;
+    transform: translateX(-50%); /* Center the tooltip */
+    white-space: nowrap; /* Prevent wrapping */
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none; /* Allow interaction with elements below */
+    z-index: 10; /* Ensure tooltip is above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a shadow */
+}
+
+.audit-entry:hover[data-tooltip]::before { /* Show tooltip on hover */
+    opacity: 1;
+}
+
+/* Basic Section Styling */
+section#experience {
+    padding: 30px;               /* Add padding around the section */
+    margin-bottom: 20px;         /* Add space below the section */
+}
+
+/* Content Area Styling */
+section#experience .experience-content {
+    margin-bottom: 30px;        /* Space between content and audits */
+}
+
+section#experience h2, 
+section#experience h3 {
+    color: #787878;              /* Light gray text color */
+    text-shadow:                /* Subtle multi-directional shadow */
+        -1px -1px 0 #000, 
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    margin-bottom: 15px;        /* Space below headings */
+}
+
+section#experience p {
+    font-family: "Roboto", sans-serif; /* Example font */
+    font-size: 18px; 
+    line-height: 1.6;           /* Improved readability */
+    color: #495057;             /* Slightly lighter text color */
+    margin-bottom: 20px;
+}
+
+/* Unordered List Styling */
+section#experience ul {
+    list-style-type: disc;      /* Use filled circles for list items */
+    padding-left: 20px;         /* Add indentation for list items */
+    margin-bottom: 20px;
+}
+
+section#experience li {
+    margin-bottom: 5px;         /* Space between list items */
+}
+
+/* Blockquote Styling */
+section#experience blockquote {
+    background-color: rgba(88, 88, 88, 0.3);   /* Light background for quote */
+    padding: 20px;
+    border-left: 5px solid #007bff; /* Blue border on the left */
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+section#experience blockquote::before { 
+    content: "“";              /* Add opening quotation mark */
+}
+
+section#experience blockquote::after { 
+    content: "”";              /* Add closing quotation mark */
+}
+
+
+/* Audit List Styling */
+section#experience .audit-list h3 {
+    color: #e0e0e0;             /* Light gray text color (same as other headings) */
+    text-shadow:                /* Subtle multi-directional shadow (same as other headings) */
+        -1px -1px 0 #000, 
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    margin-bottom: 15px;        /* Space below headings */
+}
+
+/* Audit Table Styling */
+#audit-table {
+    width: 100%;                 /* Make the table full width */
+    border-collapse: collapse;   /* Remove space between table cells */
+    margin-bottom: 20px;         /* Add space below the table */
+}
+
+#audit-table th,
+#audit-table td {
+    border: 1px solid #ddd;     /* Add borders to table cells */
+    padding: 12px;               /* Add padding to table cells */
+    text-align: left;           /* Align text to the left */
+}
+
+/* Tooltips (Optional) */
+.audit-entry[data-tooltip] {
+    position: relative;         /* Required for tooltips */
+    cursor: help;               /* Change cursor to indicate tooltip */
+}
+
+.audit-entry[data-tooltip]:hover::after {
+    content: attr(data-tooltip);   /* Display the tooltip content */
+    position: absolute;
+    top: 100%;                  /* Position above the element */
+    left: 50%;                  /* Center horizontally */
+    transform: translateX(-50%); /* Adjust horizontal position */
+    background-color: #333;     /* Dark background color */
+    color: #fff;                /* White text color */
+    padding: 10px;             /* Add padding to the tooltip */
+    border-radius: 5px;         /* Rounded corners */
+    z-index: 10;                /* Make sure tooltip is on top */
+    white-space: nowrap;        /* Prevent tooltip from wrapping */
+}
+ }

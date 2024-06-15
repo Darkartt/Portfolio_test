@@ -45,21 +45,43 @@
       </div> 
     </section>
     <section id="experience">
-      <h3>Previous Audits</h3>
-      <table id="audit-table">
-        <tr>
-          <th>Client/Project</th>
-          <th>High</th>
-          <th>Medium</th>
-          <th>Low</th>
-          <th>Critical</th>
-        </tr>
-        <tr>
-          <td class="audit-entry" data-vulns='{"high": 3, "medium": 5, "low": 10, "critical": 1}'>Client A Project</td>
-          <td class="audit-entry" data-vulns='{"high": 1, "medium": 8, "low": 15, "critical": 0}'>Client B Application</td>
-        </tr>
-      </table>
-    </section>
+    <div class="experience-content"> <h2>Work Experience</h2>
+
+        <p>
+            Experienced blockchain security engineer with a proven track record in identifying and mitigating vulnerabilities in <strong>smart contracts</strong>, <strong>decentralized applications (dApps)</strong>, and <strong>blockchain protocols</strong>.
+        </p>
+    
+        <ul>
+            <li>Proficient in conducting comprehensive security audits, code reviews, and penetration testing.</li>
+            <li>Strong understanding of cryptography, consensus mechanisms, and the latest security threats.</li>
+            <li>Experienced in working with a diverse range of clients, including startups, enterprises, and DAOs.</li>
+        </ul>
+    
+        <blockquote>
+            “The security audit conducted by 0xDarkart was instrumental in identifying critical vulnerabilities in our smart contract, potentially saving us millions in losses.” - Client A
+        </blockquote>
+    </div>
+
+    <div class="audit-list"> <h3>Previous Audits</h3>
+    
+        <table id="audit-table">
+            <tr>
+                <th class="audit-entry">Client/Project</th>
+                <th class="audit-entry">Outcome</th>
+            </tr>
+            <tr>
+                <td class="audit-entry" data-tooltip="Identified 3 high-severity and 5 medium-severity vulnerabilities in a DeFi lending protocol. Provided detailed remediation guidance to ensure secure deployment.">Client A - DeFi Lending Protocol</td>
+                <td class="audit-entry" data-tooltip="Conducted a comprehensive security assessment of a decentralized exchange (DEX), uncovering a critical reentrancy vulnerability. Recommended mitigation strategies, preventing potential loss of funds.">Client B - Decentralized Exchange</td>
+            </tr>
+            <tr>
+                <td class="audit-entry" data-tooltip="Reviewed the smart contracts of an NFT marketplace, finding logic errors that could have led to token manipulation. Proposed fixes to ensure the fair and transparent operation of the platform.">Client C - NFT Marketplace</td>
+                <td class="audit-entry" data-tooltip="Assessed the security of a DAO governance model, identifying vulnerabilities in voting mechanisms and proposal handling. Worked with the team to implement stronger security controls.">Client D - DAO Governance</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+
     <section id="testimonials">
       <h2>Testimonials</h2>
       <a class="twitter-timeline" href="https://twitter.com/0x_Darkart" data-width="400" data-height="600">Tweets by 0x_Darkart</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
