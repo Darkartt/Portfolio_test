@@ -44,7 +44,8 @@ footer {
 /* Background and Parallax */
 #background {
     background-image: url('./images/background-logo.png'); 
-    background-size: auto 100%;
+    background-size: contain;
+
     background-position: center;
     min-height: 100vh; 
     position: fixed;
@@ -683,7 +684,7 @@ section#experience .audit-list h3 {
   /* Tablet styles */
   #background {
     background-attachment: scroll; 
-    background-size: auto 100%;   /* Or use 'auto' to maintain aspect ratio */
+    background-size: contain;   /* Or use 'auto' to maintain aspect ratio */
   }
   main {
     grid-template-columns: 1fr; /* Single column for tablets */
