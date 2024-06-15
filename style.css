@@ -548,4 +548,37 @@ section#experience .audit-list h3 {
     z-index: 10;                /* Make sure tooltip is on top */
     white-space: nowrap;        /* Prevent tooltip from wrapping */
 }
- }
+
+ /* Grid Container (main-background) */
+.main-background {
+    background-image: url("path/to/your/background-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;                 /* Make main-background a grid container */
+    grid-template-columns: 1fr;   /* Single column for the whole page (adjust as needed) */
+    gap: 20px;                  /* Optional: Space between grid items (adjust as needed) */
+}
+
+/* Experience Section (Grid Item) */
+section#experience {
+    /*background-color: #fff;*/     /* Background color for the experience section */
+    padding: 30px;
+    margin-bottom: 20px;
+    /* ... (rest of the CSS styles for experience section content) ... */
+}
+
+/* Media Queries for Responsiveness (Adjust as needed) */
+@media (max-width: 768px) { 
+    /* Styles for tablets and smaller screens */
+    section#experience {
+        padding: 20px;   
+    }
+    /* ... adjust other styles as needed ... */
+}
+
+@media (max-width: 480px) {
+    /* Styles for phones and smaller screens */
+    /* ... adjust other styles as needed ... */
+}
+
