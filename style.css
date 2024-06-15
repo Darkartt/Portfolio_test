@@ -651,7 +651,21 @@ section#experience .audit-list h3 {
 }
 
 .audit-entry[data-tooltip]:hover::after {
-  /* ... (same as before) ... */
+  content: attr(data-tooltip);
+  background: black;
+  color: #00FF00;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: calc(100% + 10px); /* Position below the cell */
+  left: 50%;
+  transform: translateX(-50%); /* Center the tooltip */
+  white-space: nowrap; /* Prevent wrapping */
+  opacity: 1;  /* Make it visible on hover */
+  transition: opacity 0.3s;
+  pointer-events: none; /* Allow interaction with elements below */
+  z-index: 10; /* Ensure tooltip is above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a shadow */
 }
 
 
