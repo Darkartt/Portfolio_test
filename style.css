@@ -581,4 +581,24 @@ section#experience {
     /* Styles for phones and smaller screens */
     /* ... adjust other styles as needed ... */
 }
+* Media Query for Tablets */
+@media (max-width: 768px) {
+    .main-background {
+        grid-template-columns: 1fr;  /* Single column for tablets */
+    }
 
+    section#experience {
+        padding: 20px; 
+        /* ... adjust other styles for tablets ... */
+    }
+}
+
+/* Media Query for Phones */
+@media (max-width: 480px) {
+    .main-background {
+        /* ... further adjustments for phones ... */
+    }
+    section#experience {
+        /* ... further adjustments for phones ... */
+    }
+}
