@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Darkart - Security Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="background"></div> 
+
+  <header>
+    <h1>Darkart</h1>
+    <h2>Security Researcher | Private Audits</h2> 
+  </header>
+
+  <main>
+    <section id="intro">
+      <p>I help companies secure their code and protect against vulnerabilities. Let me audit your systems and ensure your peace of mind.</p>
+      <button id="quote-button">Get a Quote</button> 
+    </section>
+    <section id="services">
+      <h2>Services</h2>
+      <div class="service">
+        <h3>Smart Contract Audits</h3>
+        <p>
+          I offer comprehensive smart contract audits to identify and mitigate vulnerabilities in your decentralized applications. 
+          My audits include in-depth code reviews, automated testing, and manual analysis to ensure your contracts are secure and reliable.
+        </p>
+      </div> 
+    </section>
+    <section id="experience">
+      <h3>Previous Audits</h3>
+      <table id="audit-table">
+        <tr>
+          <th>Client/Project</th>
+          <th>High</th>
+          <th>Medium</th>
+          <th>Low</th>
+          <th>Critical</th>
+        </tr>
+        <tr>
+          <td class="audit-entry" data-vulns='{"high": 3, "medium": 5, "low": 10, "critical": 1}'>Client A Project</td>
+          <td class="audit-entry" data-vulns='{"high": 1, "medium": 8, "low": 15, "critical": 0}'>Client B Application</td>
+        </tr>
+      </table>
+    </section>
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <a class="twitter-timeline" href="https://twitter.com/0x_Darkart" data-width="400" data-height="600">Tweets by 0x_Darkart</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </section>
+    <div id="quote-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Get a Quote</h3>
+        <form id="quote-form">
+          <div class="form-group">
+            <label for="first-name">First Name:</label><br>
+            <input type="text" id="first-name" name="first-name" required>
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name:</label><br>
+            <input type="text" id="last-name" name="last-name" required>
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="company">Company:</label><br>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget (USD):</label><br>
+            <input type="number" id="budget" name="budget">
+          </div>
+          <div class="form-group">
+            <label for="timeline">Timeline (Weeks):</label><br>
+            <input type="number" id="timeline" name="timeline">
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+  </main>
+  <div id="particle-container"></div>
+  <footer>
+    <p>&copy; 2024 Darkart</p>
+    <a href="mailto:GTI9377@gmail.com" title="Email"><i class="fas fa-envelope"></i></a> | 
+    <a href="https://t.me/Darkartt" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a> |
+    <a href="https://github.com/Darkartt" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+  </footer>
+  <div id="animation-container"></div> 
+  <script src="script.js"></script>
+</body>
+</html>

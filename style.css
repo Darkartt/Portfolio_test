@@ -1,0 +1,404 @@
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrollbar due to animation */
+}
+
+h1, h2, h3 {
+    color: #00FF00; /* Bright green */
+    text-shadow: 0 0 5px #000; /* Subtle black text shadow */
+}
+
+p, li, .audit-entry, .service h3, .form-group label {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* Subtle black text shadow */
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Ensure header content is above the background */
+    z-index: 1;
+}
+
+main {
+    padding: 20px;
+    position: relative; /* Ensure main content is above the background */
+    z-index: 1;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Background and Parallax */
+#background {
+    background-image: url('https://i.ibb.co/QKfQkm3/Within-the-intr-40ee6189-3e5f-4d6a-82a9-8cdb07c88238.png'); 
+    background-size: cover;
+    background-attachment: fixed; 
+    background-position: center;
+    min-height: 100vh; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; 
+    filter: blur(5px) brightness(0.5); 
+}
+
+/* Black Hat Animation */
+#animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+    overflow: hidden;
+}
+
+.animated-number {
+    position: absolute;
+    font-family: 'Courier New', monospace; 
+    font-size: 18px;
+    color: #00FF00;
+    opacity: 0.5; 
+    animation: moveDown 8s linear infinite; 
+}
+
+@keyframes moveDown {
+    0% {
+        top: -10%; 
+    }
+
+    100% {
+        top: 110%; 
+    }
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #00FF00;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px; 
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: transparent;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    float: left;
+    clear: left;
+    text-align: right; 
+}
+
+.timeline-item:nth-child(even) {
+    float: right;
+    clear: right;
+    text-align: left; 
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -11px;
+    background-color: white;
+    border: 2px solid #00FF00;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -12px; 
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: rgba(26, 26, 26, 0.8);
+    position: relative;
+    border-radius: 6px;
+}
+
+.timeline-content h4 {
+    margin-top: 0;
+}
+
+
+
+/* Services and Testimonials Sections */
+#services, #testimonials {
+  margin-bottom: 30px;
+}
+
+.service {
+  padding: 20px;
+  border: 1px solid #00FF00; 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+}
+
+
+/* Quote Form Styles */
+#quote-form {
+  display: flex;
+  flex-direction: column; 
+  gap: 15px;             
+}
+
+.form-group {
+  position: relative;  
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #00FF00; 
+  position: absolute;     
+  top: 10px;             
+  left: 10px;
+  transition: 0.3s ease all; 
+  pointer-events: none;    
+}
+
+.form-group input[type="text"]:focus + label,
+.form-group textarea:focus + label,
+.form-group input[type="number"]:focus + label,
+.form-group input[type="email"]:focus + label {
+  top: -12px;           
+  left: 0;
+  font-size: 12px;       
+  color: #00FF00;       
+}
+
+/* Form Field Animation */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="number"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 15px 10px 5px;  
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #00FF00; 
+  background-color: #1a1a1a; 
+  color: white;
+  border-radius: 5px; 
+  transition: border-color 0.3s ease; 
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="email"]:focus {
+  border-color: #00FF00; 
+  outline: none;
+}
+
+/* Form Submit Button Animation */
+#quote-form input[type="submit"] {
+  background-color: #00FF00; 
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
+  width: 100%; /* Make the button full width */
+}
+
+#quote-form input[type="submit"]:hover {
+  transform: translateY(-2px); /* Move slightly up on hover */
+  box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* More prominent shadow */
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background */
+}
+
+.modal-content {
+    background-color: #1a1a1a; /* Darker grey background */
+    margin: 10% auto; 
+    padding: 30px;
+    border: 2px solid #00FF00; /* Thicker green border */
+    border-radius: 10px; /* Rounded corners */
+    width: 80%;
+    max-width: 400px; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
+    animation: slideIn 0.5s ease; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 50%;
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+}
+
+.close-button {
+    color: white;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer; /* Add cursor on hover */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #00FF00; /* Bright green on hover */
+}
+
+/* Modal Form Styles (within .modal-content) */
+.modal-content h3 {
+    color: #00FF00; /* Bright green for the heading */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative; /* For positioning labels */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #00FF00; 
+  position: absolute;     
+  top: 10px;             
+  left: 10px;
+  transition: 0.3s ease all; 
+  pointer-events: none;    
+}
+
+.form-group input[type="text"]:focus + label,
+.form-group textarea:focus + label,
+.form-group input[type="number"]:focus + label,
+.form-group input[type="email"]:focus + label {
+  top: -12px;           
+  left: 0;
+  font-size: 12px;       
+  color: #00FF00;       
+}
+
+/* Form Field Animation */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="number"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 5px;  /* Reduced padding for better alignment */
+  margin: 15px 0 5px 0; /* Adjusted margin for spacing */
+  box-sizing: border-box;
+  border: 1px solid #00FF00;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+/* Form Submit Button Animation */
+#quote-form input[type="submit"] {
+  background-color: #00FF00; 
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
+  width: 100%; /* Make the button full width */
+}
+
+#quote-form input[type="submit"]:hover {
+  transform: translateY(-2px); /* Move slightly up on hover */
+  box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* More prominent shadow */
+}
+
+
+/* to disable scroll when modal is open*/
+body.modal-open {
+  overflow: hidden;
+}
+
+
+/* Error message styles */
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none; /* Hidden by default */
+}
+
+/* Particle Effects */
+#particle-container {
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; 
+  z-index: 0; 
+  pointer-events: none; /* Allow mouse events to pass through the container to the links */
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00FF00; /* Bright green particles */
+  opacity: 0.8; 
+  pointer-events: none; 
+}
+
+/* Icon Styles (Add this to your style.css) */
+footer a i {
+  margin-right: 5px; /* Add some space between the icon and text */
+  font-size: 24px;   /* Make icons larger */
+  
+}
+
+
