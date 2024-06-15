@@ -8,7 +8,7 @@ body {
     background-color: black;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden; /* Prevent horizontal scrollbar due to animation */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -44,7 +44,7 @@ footer {
 
 /* Background and Parallax */
 #background {
-    background-image: url('https://i.ibb.co/QKfQkm3/Within-the-intr-40ee6189-3e5f-4d6a-82a9-8cdb07c88238.png'); 
+    background-image: url('./images/background-logo.png'); 
     background-size: cover;
     background-attachment: fixed; 
     background-position: center;
@@ -152,8 +152,6 @@ footer {
     margin-top: 0;
 }
 
-
-
 /* Services and Testimonials Sections */
 #services, #testimonials {
   margin-bottom: 30px;
@@ -164,6 +162,47 @@ footer {
   border: 1px solid #00FF00; 
   border-radius: 5px; 
   margin-bottom: 20px; 
+}
+
+/* Navigation Styles */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;     
+  justify-content: center; 
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #00FF00; 
+}
+
+/* Quote Button Styling */
+#quote-button {
+  background-color: #00FF00; 
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  margin-left: 20px; 
+}
+
+#quote-button:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.4);
 }
 
 
@@ -223,82 +262,57 @@ footer {
   outline: none;
 }
 
-/* Form Submit Button Animation */
-#quote-form input[type="submit"] {
-  background-color: #00FF00; 
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
-  width: 100%; /* Make the button full width */
-}
-
-#quote-form input[type="submit"]:hover {
-  transform: translateY(-2px); /* Move slightly up on hover */
-  box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* More prominent shadow */
-}
-
-
 /* Modal Styles */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.7); /* Darker background */
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background */
 }
 
 .modal-content {
-    background-color: #1a1a1a; /* Darker grey background */
-    margin: 10% auto; 
-    padding: 30px;
-    border: 2px solid #00FF00; /* Thicker green border */
-    border-radius: 10px; /* Rounded corners */
-    width: 80%;
-    max-width: 400px; 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
-    animation: slideIn 0.5s ease; /* Slide-in animation */
+  background-color: #1a1a1a; /* Darker grey background */
+  margin: 10% auto; 
+  padding: 30px;
+  border: 2px solid #00FF00; /* Thicker green border */
+  border-radius: 10px; /* Rounded corners */
+  width: 80%;
+  max-width: 400px; 
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow */
+  animation: slideIn 0.5s ease; /* Slide-in animation */
 }
 
 @keyframes slideIn {
-    from {
-        top: -300px;
-        opacity: 0;
-    }
-
-    to {
-        top: 50%;
-        opacity: 1;
-        transform: translate(0, -50%);
-    }
+  from { top: -300px; opacity: 0; }
+  to { top: 50%; opacity: 1; transform: translate(0, -50%); }
 }
 
 .close-button {
-    color: white;
-    float: right;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer; /* Add cursor on hover */
+  color: white;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer; /* Add cursor on hover */
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: #00FF00; /* Bright green on hover */
+  color: #00FF00; /* Bright green on hover */
 }
 
 /* Modal Form Styles (within .modal-content) */
 .modal-content h3 {
-    color: #00FF00; /* Bright green for the heading */
-    text-align: center;
-    margin-bottom: 20px;
+  color: #00FF00; /* Bright green for the heading */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+/* Form group styles */
 .form-group {
   margin-bottom: 15px;
   position: relative; /* For positioning labels */
@@ -331,39 +345,23 @@ footer {
 .form-group input[type="number"],
 .form-group input[type="email"] {
   width: 100%;
-  padding: 5px;  /* Reduced padding for better alignment */
-  margin: 15px 0 5px 0; /* Adjusted margin for spacing */
+  padding: 15px 10px 5px;  
+  margin: 5px 0;
   box-sizing: border-box;
-  border: 1px solid #00FF00;
-  background-color: #1a1a1a;
+  border: 1px solid #00FF00; 
+  background-color: #1a1a1a; 
   color: white;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
+  border-radius: 5px; 
+  transition: border-color 0.3s ease; 
 }
 
-/* Form Submit Button Animation */
-#quote-form input[type="submit"] {
-  background-color: #00FF00; 
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
-  width: 100%; /* Make the button full width */
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="email"]:focus {
+  border-color: #00FF00; 
+  outline: none;
 }
-
-#quote-form input[type="submit"]:hover {
-  transform: translateY(-2px); /* Move slightly up on hover */
-  box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* More prominent shadow */
-}
-
-
-/* to disable scroll when modal is open*/
-body.modal-open {
-  overflow: hidden;
-}
-
 
 /* Error message styles */
 .error-message {
@@ -372,75 +370,15 @@ body.modal-open {
   display: none; /* Hidden by default */
 }
 
-/* Particle Effects */
-#particle-container {
-  position: absolute; 
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; 
-  z-index: 0; 
-  pointer-events: none; /* Allow mouse events to pass through the container to the links */
+/* to disable scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
 }
 
-.particle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #00FF00; /* Bright green particles */
-  opacity: 0.8; 
-  pointer-events: none; 
-}
-
-/* Icon Styles (Add this to your style.css) */
-footer a i {
-  margin-right: 5px; /* Add some space between the icon and text */
-  font-size: 24px;   /* Make icons larger */
-  
-}
-
-#intro {
-    text-align: center; /* Center the text */
-}
-
-#intro h2 {
-    font-size: 2.5em;   /* Increase font size */
-    font-weight: bold; /* Make it bold */
-    margin-bottom: 20px;
-    line-height: 1.2; /* Adjust line height for better spacing */
-    animation: fadeIn 1s ease; /* Subtle fade-in animation */
-    display: inline-flex; /* Allow icon and text to be on the same line */
-    align-items: center; /* Vertically align icon and text */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-    animation: pulse 2s infinite;  /* Apply pulse animation */
-
-
-@keyframes pulse {
-  0% {
-    transform: scale(1); /* Start at normal size */
-  }
-  50% {
-    transform: scale(1.05); /* Slightly increase size */
-  }
-  100% {
-    transform: scale(1); /* Return to normal size */
-  }
-}
-
+/* Lock Icon Styling */
 .lock-icon {
-  width: 40px; /* Adjust the size as needed */
-  height: 40px;
-  margin-right: 10px; /* Add spacing between icon and text */
-  vertical-align: middle; /* Align icon with text */
+  width: 24px; /* Adjusted size */
+  height: 24px;
+  margin-right: 10px; 
+  vertical-align: middle; 
 }
