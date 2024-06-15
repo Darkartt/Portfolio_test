@@ -683,7 +683,7 @@ section#experience .audit-list h3 {
   /* Tablet styles */
   #background {
     background-attachment: scroll; 
-    background-size: contain;   /* Or use 'auto' to maintain aspect ratio */
+    background-size: auto 100%;   /* Or use 'auto' to maintain aspect ratio */
   }
   main {
     grid-template-columns: 1fr; /* Single column for tablets */
@@ -717,7 +717,7 @@ section#experience .audit-list h3 {
     /* Further adjustments for phones */
     #background {
       background-attachment: scroll; 
-      background-size: contain;   /* Or use 'auto' to maintain aspect ratio */
+      background-size: auto 100%;   /* Or use 'auto' to maintain aspect ratio */
     }
 
     #audit-table {
