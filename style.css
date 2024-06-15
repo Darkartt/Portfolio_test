@@ -682,6 +682,10 @@ section#experience .audit-list h3 {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   /* Tablet styles */
+  #background {
+    background-attachment: scroll; 
+    background-size: contain;   /* Or use 'auto' to maintain aspect ratio */
+  }
   main {
     grid-template-columns: 1fr; /* Single column for tablets */
     width: 95%;
@@ -712,7 +716,14 @@ section#experience .audit-list h3 {
     
   @media (max-width: 480px) {
     /* Further adjustments for phones */
+    #background {
+      background-attachment: scroll; 
+      background-size: contain;   /* Or use 'auto' to maintain aspect ratio */
+    }
+
     #audit-table {
     max-width: 100%; /* Make the table full-width on phones */
+    
     }
     }
+  
