@@ -709,3 +709,10 @@ section#experience .audit-list h3 {
   .timeline-item {
     width: 100%; /* Make timeline items full width on tablets */
     text-align: center; /* Center align text in timeline items */
+    
+  @media (max-width: 480px) {
+    /* Further adjustments for phones */
+    #audit-table {
+    max-width: 100%; /* Make the table full-width on phones */
+    }
+    }
