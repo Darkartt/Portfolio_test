@@ -401,4 +401,46 @@ footer a i {
   
 }
 
+#intro {
+    text-align: center; /* Center the text */
+}
 
+#intro h2 {
+    font-size: 2.5em;   /* Increase font size */
+    font-weight: bold; /* Make it bold */
+    margin-bottom: 20px;
+    line-height: 1.2; /* Adjust line height for better spacing */
+    animation: fadeIn 1s ease; /* Subtle fade-in animation */
+    display: inline-flex; /* Allow icon and text to be on the same line */
+    align-items: center; /* Vertically align icon and text */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    animation: pulse 2s infinite;  /* Apply pulse animation */
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Start at normal size */
+  }
+  50% {
+    transform: scale(1.05); /* Slightly increase size */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+  }
+}
+
+.lock-icon {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px;
+  margin-right: 10px; /* Add spacing between icon and text */
+  vertical-align: middle; /* Align icon with text */
+}
