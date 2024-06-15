@@ -657,13 +657,32 @@ section#experience .audit-list h3 {
 
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) { 
-  /* ... your styles for tablets ... */
-}
+@media (max-width: 768px) {
+  /* Tablet styles */
+  main {
+    grid-template-columns: 1fr; /* Single column for tablets */
+    width: 95%;
+  }
 
-@media (max-width: 480px) {
-  body { /* Or your main container */
-        background-size: cover; 
-    }
-  /* ... your styles for phones ... */
-}
+  /* Adjust font sizes for tablets */
+  h1,
+  h2,
+  h3 {
+    font-size: 28px;
+  }
+
+  p,
+  li,
+  .audit-entry,
+  .service h3,
+  .form-group label {
+    font-size: 16px;
+  }
+
+  .timeline {
+    max-width: 100%; /* Make timeline full width on tablets */
+  }
+
+  .timeline-item {
+    width: 100%; /* Make timeline items full width on tablets */
+    text-align: center; /* Center align text in timeline items */
