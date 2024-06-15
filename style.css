@@ -44,7 +44,8 @@ footer {
 /* Background and Parallax */
 #background {
     background-image: url('./images/background-logo.png'); 
-    background-size: cover;
+    background-size: auto 100%;
+    background-attachment: fixed; 
     background-position: center;
     min-height: 100vh; 
     position: fixed;
