@@ -549,56 +549,121 @@ section#experience .audit-list h3 {
     white-space: nowrap;        /* Prevent tooltip from wrapping */
 }
 
- /* Grid Container (main-background) */
+/* Grid Container (main-background) */
 .main-background {
-    background-image: url("path/to/your/background-image.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: grid;                 /* Make main-background a grid container */
-    grid-template-columns: 1fr;   /* Single column for the whole page (adjust as needed) */
-    gap: 20px;                  /* Optional: Space between grid items (adjust as needed) */
+  background-image: url("path/to/your/background-image.jpg"); /* Replace with your actual image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;                 /* Make main-background a grid container */
+  grid-template-columns: 1fr;   /* Single column for smaller screens */
+  gap: 20px;                  /* Adjust gap as needed */
+  min-height: 100vh;           /* Ensure the background covers the full viewport height */
+  align-items: center;
+  justify-content: center;
 }
 
 /* Experience Section (Grid Item) */
 section#experience {
-    /*background-color: #fff;*/     /* Background color for the experience section */
-    padding: 30px;
-    margin-bottom: 20px;
-    /* ... (rest of the CSS styles for experience section content) ... */
+  padding: 30px;
+  margin-bottom: 20px;
 }
 
-/* Media Queries for Responsiveness (Adjust as needed) */
+/* Content Area Styling */
+section#experience .experience-content {
+  margin-bottom: 30px;        /* Space between content and audits */
+}
+
+/* Headings (h2, h3) */
+section#experience h2,
+section#experience h3 {
+  color: #e0e0e0;              /* Light gray text color */
+  text-shadow:                /* Subtle multi-directional shadow */
+      -1px -1px 0 #000, 
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  margin-bottom: 15px;        /* Space below headings */
+}
+
+/* Paragraphs and List Items */
+section#experience p,
+section#experience li {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px; 
+  line-height: 1.6;           
+  color: #495057;            
+  margin-bottom: 20px;
+}
+
+/* Unordered List Styling */
+section#experience ul {
+  list-style-type: disc;     
+  padding-left: 20px;        
+  margin-bottom: 20px;
+}
+
+/* Blockquote Styling */
+section#experience blockquote {
+  background-color: rgba(88, 88, 88, 0.7);
+  padding: 20px;
+  border-left: 5px solid #007bff;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+section#experience blockquote::before {
+  content: "“";
+}
+
+section#experience blockquote::after {
+  content: "”";
+}
+
+/* Audit List Styling (Similar to Headings) */
+section#experience .audit-list h3 {
+  color: #e0e0e0;             
+  text-shadow:                
+      -1px -1px 0 #000, 
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  margin-bottom: 15px;      
+}
+
+/* Audit Table Styling */
+#audit-table {
+  width: 100%;                
+  border-collapse: collapse;   
+  margin-bottom: 20px;       
+}
+
+#audit-table th,
+#audit-table td {
+  border: 1px solid #ddd;   
+  padding: 12px;             
+  text-align: left;        
+}
+
+/* Tooltips */
+.audit-entry[data-tooltip] {
+  position: relative;        
+  cursor: help;               
+}
+
+.audit-entry[data-tooltip]:hover::after {
+  /* ... (same as before) ... */
+}
+
+
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) { 
-    /* Styles for tablets and smaller screens */
-    section#experience {
-        padding: 20px;   
-    }
-    /* ... adjust other styles as needed ... */
+  /* ... your styles for tablets ... */
 }
 
 @media (max-width: 480px) {
-    /* Styles for phones and smaller screens */
-    /* ... adjust other styles as needed ... */
-}
-* Media Query for Tablets */
-@media (max-width: 768px) {
-    .main-background {
-        grid-template-columns: 1fr;  /* Single column for tablets */
+  body { /* Or your main container */
+        background-size: cover; 
     }
-
-    section#experience {
-        padding: 20px; 
-        /* ... adjust other styles for tablets ... */
-    }
-}
-
-/* Media Query for Phones */
-@media (max-width: 480px) {
-    .main-background {
-        /* ... further adjustments for phones ... */
-    }
-    section#experience {
-        /* ... further adjustments for phones ... */
-    }
+  /* ... your styles for phones ... */
 }
