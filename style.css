@@ -261,7 +261,7 @@ img[alt="Home Button"]:hover {
 header #quote-button {
   position: absolute;
   top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
+  right: 5px; /* Adjust as needed */
 }
 
 /* Quote Form Styles */
