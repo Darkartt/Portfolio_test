@@ -170,3 +170,14 @@ function createParticle(x, y) {
     }
   `);
 }
+
+
+document.addEventListener('scroll', () => {
+  const background = document.getElementById('background');
+  const scrollPosition = window.scrollY;
+
+  // Calculate parallax movement based on scroll position
+  const parallaxValue = scrollPosition * 0.3; // Adjust the 0.5 for slower/faster parallax
+
+  background.style.backgroundPositionY = `${-parallaxValue}px`;
+});
