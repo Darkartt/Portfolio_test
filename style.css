@@ -26,7 +26,7 @@ header {
     padding: 20px;
     text-align: center;
     position: relative; /* Ensure header content is above the background */
-    z-index: 1;
+    z-index: auto;
 }
 
 main {
@@ -190,6 +190,34 @@ nav a {
 nav a:hover {
   color: #00FF00; 
 }
+/* HOME BUTON */
+img[alt="Home Button"] {
+  top: 5px; /* Adjust as needed */
+  left: 5px; /* Adjust as needed */
+  width: 64px;  /* Further reduced size */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 999999 !important;
+  opacity: 0.6;
+}
+
+img[alt="Home Button"]:hover {
+  opacity: 1.0; 
+  cursor: pointer; 
+}
+
+.logo-container {
+  position: fixed;  /* Keep the container fixed */
+  top: 5px;         /* Adjust top position as needed */
+  left: 5px;        /* Adjust left position as needed */
+  z-index: 9999;    /* Ensure it's on top */
+}
+
+.home-logo {
+  width: 4px;       /* Set width as desired */
+  height: auto;     /* Maintain aspect ratio */
+  opacity: 0.8;     /* Adjust transparency as desired */
+}
+
 
 /* Quote Button Styling */
 #quote-button {
@@ -756,4 +784,4 @@ section#experience .audit-list h3 {
     
     }
     }
-  
+    /* Home Button */
