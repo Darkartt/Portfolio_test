@@ -22,7 +22,7 @@ p, li, .audit-entry, .service h3, .form-group label {
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.0); /* Semi-transparent black */
     padding: 20px;
     text-align: center;
     position: relative; /* Ensure header content is above the background */
