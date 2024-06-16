@@ -26,7 +26,7 @@ header {
     padding: 20px;
     text-align: center;
     position: relative; /* Ensure header content is above the background */
-    z-index: auto;
+    z-index: 1000;
 }
 
 main {
@@ -167,6 +167,28 @@ footer {
   margin-bottom: 20px; 
 }
 
+/* Basic Styling */
+nav ul li a {
+  text-decoration: none; /* Remove underlines */
+  color: #00FF00;       /* Bright green color */
+  font-weight: bold;    /* Make text bold */
+  padding: 10px 15px;   /* Add padding for better clickability */
+  border-radius: 5px;    /* Slightly rounded corners */
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover Effect */
+nav ul li a:hover {
+  background-color: rgba(0, 255, 0, 0.2); /* Subtle green background on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Optional: Add a subtle border */
+nav ul li a {
+  border: 1px solid rgba(0, 255, 0, 0.5); /* Semi-transparent green border */
+}
+
+
 /* Navigation Styles */
 nav ul {
   list-style: none;
@@ -236,6 +258,11 @@ img[alt="Home Button"]:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.4);
 }
 
+header #quote-button {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+}
 
 /* Quote Form Styles */
 #quote-form {
