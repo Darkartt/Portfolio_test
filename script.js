@@ -181,3 +181,13 @@ document.addEventListener('scroll', () => {
 
   background.style.backgroundPositionY = `${-parallaxValue}px`;
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const typingTextElement = document.querySelector('.typing-text');
+
+  // Check if the element is found
+  if (typingTextElement) {
+    typingTextElement.style.width = "100%"; // Trigger the typing animation by setting width to 100% 
+  }
+});
+
