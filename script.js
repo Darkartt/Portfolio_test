@@ -119,7 +119,7 @@ function createAnimatedNumber() {
   }, (parseFloat(number.style.animationDuration) + parseFloat(number.style.animationDelay)) * 1000);
 }
 
-setInterval(createAnimatedNumber, 9000); 
+setInterval(createAnimatedNumber, 3000); 
 
 // Particle Effects (Corrected)
 const particleContainer = document.getElementById('particle-container');
