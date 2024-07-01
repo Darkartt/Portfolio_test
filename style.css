@@ -260,7 +260,7 @@ img[alt="Home Button"]:hover {
   color: black;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease; 
   margin-left: 20px; 
@@ -282,7 +282,7 @@ header #quote-button {
 #quote-form {
   display: flex;
   flex-direction: column; 
-  gap: 15px;             
+  gap: 20px;             
 }
 
 .form-group {
@@ -336,21 +336,20 @@ header #quote-button {
 
 /* Typing animation */
 #intro .typing-text {
-  position: fixed;
+  position: cover;
+  background-size:cover;
   opacity: 0.3; /* Make text visible from the start */
   overflow: hidden;
   white-space: nowrap; /* Keep the text on one line */
   width: 0;             /* Initial width 0 for the animation to work */
   border-right: 0.15em solid #00FF00; /* Blinking cursor */
-  animation: 
-    typing 3.5s steps(40, end) 1, /* Typing animation with adjusted duration and iteration count */
-    blink-caret 0.75s step-end infinite; /* Cursor animation */
+  animation: typing 5s steps(40, end) forwards, blink-caret 0.75s step-end infinite; /* Typing and cursor animations */
 }
 
 /* Typing animation */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from { max-width: 0 }
+  to { max-width: 100% }
 }
 
 /* Cursor animation */
