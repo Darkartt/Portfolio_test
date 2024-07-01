@@ -191,3 +191,22 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// Get the element you want to observe
+const typingText = document.querySelector('#intro .typing-text');
+
+// Create an intersection observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // If the element is in view, start the animation
+      typingText.style.animationPlayState = 'running';
+      observer.unobserve(entry.target); // Stop observing once it's in view
+    } else {
+      // If not in view, pause the animation
+      typingText.style.animationPlayState = 'paused';
+    }
+  });
+});
+
+// Start observing the element
+observer.observe(typingText);

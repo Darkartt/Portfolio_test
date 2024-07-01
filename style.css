@@ -263,7 +263,8 @@ img[alt="Home Button"]:hover {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease; 
-  margin-left: 20px; 
+  margin-left: 20px;
+  z-index: 100; 
 }
 
 #quote-button:hover {
@@ -272,9 +273,9 @@ img[alt="Home Button"]:hover {
 }
 
 header #quote-button {
-  position: absolute;
-  top: 30px; /* Adjust as needed */
-  right: 5px; /* Adjust as needed */
+  position:fixed;
+  top: 60px; /* Adjust as needed */
+  right: 45px; /* Adjust as needed */
   z-index: 1002;
 }
 
@@ -282,7 +283,8 @@ header #quote-button {
 #quote-form {
   display: flex;
   flex-direction: column; 
-  gap: 20px;             
+  gap: 20px;
+               
 }
 
 .form-group {
@@ -336,14 +338,16 @@ header #quote-button {
 
 /* Typing animation */
 #intro .typing-text {
-  position: cover;
+  position: relative; /* Set position to relative */
+  top: 10px; /* Adjust the initial position so it's hidden above the viewport */
   background-size:cover;
-  opacity: 0.3; /* Make text visible from the start */
+  opacity: 0.6; /* Make text visible from the start */
   overflow: hidden;
   white-space: nowrap; /* Keep the text on one line */
   width: 0;             /* Initial width 0 for the animation to work */
   border-right: 0.15em solid #00FF00; /* Blinking cursor */
   animation: typing 5s steps(40, end) forwards, blink-caret 0.75s step-end infinite; /* Typing and cursor animations */
+  z-index: 1003;
 }
 
 /* Typing animation */
@@ -362,12 +366,12 @@ header #quote-button {
 .modal {
   display: none; 
   position: fixed; 
-  z-index: 1; 
+  z-index: 1000; 
   left: 0;
   top: 0;
   width: 100%; 
   height: 100%; 
-  overflow: auto; 
+  overflow: hidden; 
   background-color: rgba(0, 0, 0, 0.7); /* Darker background */
 }
 
@@ -389,7 +393,7 @@ header #quote-button {
 }
 
 .close-button {
-  color: white;
+  color: #00FF00;
   float: right;
   font-size: 30px;
   font-weight: bold;
@@ -410,7 +414,7 @@ header #quote-button {
 
 /* Form group styles */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   position: relative; /* For positioning labels */
 }
 
@@ -419,8 +423,8 @@ header #quote-button {
   margin-bottom: 5px;
   color: #00FF00; 
   position: absolute;     
-  top: 10px;             
-  left: 10px;
+  top: 0px;             
+  left: 0px;
   transition: 0.3s ease all; 
   pointer-events: none;    
 }
