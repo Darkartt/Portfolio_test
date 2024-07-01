@@ -336,7 +336,7 @@ header #quote-button {
 
 /* Typing animation */
 #intro .typing-text {
-  opacity: 1; /* Make text visible from the start */
+  opacity: 0; /* Make text visible from the start */
   overflow: hidden;
   white-space: nowrap; /* Keep the text on one line */
   width: 0;             /* Initial width 0 for the animation to work */
