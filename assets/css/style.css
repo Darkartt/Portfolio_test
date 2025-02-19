@@ -1,15 +1,13 @@
 /* ===== Base Styles & Variables ===== */
 :root {
-  --primary-accent: #00ff00;
-  --dark-bg: #0a0a0a;
-  --text-primary: rgba(255, 255, 255, 0.9);
-  --font-mono: 'Courier New', monospace;
-  --section-spacing: 4rem;
   --neon-green: #00ff00;
   --cyber-black: #0a0a0a;
   --hud-blue: #00f7ff;
   --matrix-green: rgba(0, 255, 0, 0.1);
   --glow-effect: 0 0 15px rgba(0, 255, 0, 0.4);
+  --primary-accent: #00ff00;
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --section-spacing: 4rem;
 }
 
 * {
@@ -20,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }
 
 body {
@@ -31,9 +30,23 @@ body {
   background: var(--cyber-black);
 }
 
+/* ===== Scroll Animations ===== */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+  padding: var(--section-spacing) 2rem;
+  text-align: center;
+}
+
+.section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== Background System ===== */
 #background {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100vw;
@@ -42,7 +55,7 @@ body {
       linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85)),
       url('../images/background-logo.png') center/cover no-repeat;
   filter: brightness(0.5);
-  z-index: -1;
+  z-index: 1;
 }
 
 #content {
@@ -57,7 +70,7 @@ body {
   top: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.95);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -106,81 +119,7 @@ body {
   width: 100%;
 }
 
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: var(--neon-green);
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
-/* ===== Hero Section ===== */
-#intro {
-  padding: 8rem 2rem 4rem;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.lock-icon {
-  width: 80px;
-  height: 80px;
-  margin: 2rem auto;
-  display: block;
-  fill: transparent;
-  stroke: var(--neon-green);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.4));
-  animation: float 3s ease-in-out infinite;
-}
-
-.typing-text {
-  font-size: 2.5rem;
-  margin: 2rem 0;
-  border-right: 3px solid var(--primary-accent);
-  white-space: nowrap;
-  overflow: hidden;
-  animation: 
-      typing 5s steps(40) forwards,
-      blink-caret 0.75s step-end infinite;
-}
-
-/* ===== Animations ===== */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--primary-accent) }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes scanline {
-  from { transform: translateY(-50%) rotate(45deg); }
-  to { transform: translateY(50%) rotate(45deg); }
-}
-
-/* ===== CTA Button ===== */
+/* ===== Buttons ===== */
 .cta-button {
   background: var(--neon-green);
   color: var(--cyber-black);
@@ -190,6 +129,7 @@ body {
   cursor: pointer;
   font-size: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
 }
 
 .cta-button:hover {
@@ -197,182 +137,18 @@ body {
   box-shadow: var(--glow-effect);
 }
 
-/* ===== Services Section ===== */
-#services {
-  padding: var(--section-spacing) 2rem;
-}
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.service-card {
-  background: rgba(0, 0, 0, 0.7);
+.audit-details {
+  background: transparent;
   border: 1px solid var(--neon-green);
-  padding: 2rem;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-      45deg,
-      transparent 25%,
-      var(--matrix-green) 50%,
-      transparent 75%
-  );
-  animation: scanline 8s linear infinite;
-  z-index: 1;
-}
-
-.service-card:hover {
-  transform: translateY(-5px) rotate(1deg);
-}
-
-/* ===== Experience Section ===== */
-#experience {
-  padding: var(--section-spacing) 2rem;
-}
-
-.blockchain-badges {
-  display: flex;
-  gap: 1rem;
-  margin: 2rem 0;
-  justify-content: center;
-}
-
-.chain-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
-  position: relative;
-}
-
-.chain-icon:hover {
-  transform: scale(1.2) rotate(15deg);
-}
-
-.chain-icon::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--cyber-black);
   color: var(--neon-green);
-  padding: 0.5rem;
-  border: 1px solid var(--neon-green);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.chain-icon:hover::after {
-  opacity: 1;
-}
-
-.audit-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.audit-card {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid var(--neon-green);
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.audit-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-      45deg,
-      transparent 25%,
-      var(--matrix-green) 50%,
-      transparent 75%
-  );
-  animation: scanline 8s linear infinite;
-  z-index: 1;
-}
-
-.audit-card:hover {
-  transform: scale(1.02);
-}
-
-/* ===== Testimonials Section ===== */
-#testimonials {
-  padding: var(--section-spacing) 2rem;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.testimonial-card {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid var(--neon-green);
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-      45deg,
-      transparent 25%,
-      var(--matrix-green) 50%,
-      transparent 75%
-  );
-  animation: scanline 8s linear infinite;
-  z-index: 1;
-}
-
-.testimonial-card p {
-  font-style: italic;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 2;
-}
-
-.testimonial-card cite {
-  display: block;
-  text-align: right;
-  color: var(--hud-blue);
-  position: relative;
-  z-index: 2;
+.audit-details:hover {
+  background: var(--neon-green);
+  color: var(--cyber-black);
 }
 
 /* ===== Modal Styles ===== */
@@ -414,56 +190,104 @@ body {
   color: var(--hud-blue);
 }
 
-.modal-content h2 {
-  color: var(--text-primary);
+/* ===== Form Styles ===== */
+#quote-form input,
+#quote-form textarea {
+  width: 100%;
+  padding: 0.75rem;
   margin-bottom: 1rem;
-}
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.modal-content input,
-.modal-content textarea {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--neon-green);
-  padding: 0.5rem;
   color: var(--text-primary);
   border-radius: 4px;
 }
 
-.modal-content button {
+#quote-form button {
   background: var(--neon-green);
   color: var(--cyber-black);
+  padding: 0.75rem 1.5rem;
   border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
   border-radius: 4px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.modal-content button:hover {
+#quote-form button:hover {
   transform: scale(1.05);
 }
 
-/* ===== Three.js Canvas ===== */
-#blockchain-canvas {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 300px;
-  height: 300px;
-  z-index: 1000;
-  pointer-events: none;
+/* ===== Service Grid ===== */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border: 1px solid var(--neon-green);
+  border-radius: 8px;
+}
+
+.service-card i {
+  font-size: 2rem;
+  color: var(--neon-green);
+  margin-bottom: 1rem;
+}
+
+/* ===== Audit Grid ===== */
+.audit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.audit-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+  border: 1px solid var(--neon-green);
+  border-radius: 8px;
+}
+
+.audit-meta {
+  margin: 1rem 0;
+}
+
+.vuln-count {
+  background: var(--neon-green);
+  color: var(--cyber-black);
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}
+
+/* ===== Testimonials Section ===== */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--neon-green);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card cite {
+  display: block;
+  margin-top: 1rem;
+  color: var(--hud-blue);
 }
 
 /* ===== Footer ===== */
 footer {
-  text-align: center;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.95);
 }
 
 .social-links {
@@ -472,8 +296,8 @@ footer {
 
 .social-links a {
   color: var(--neon-green);
-  margin: 0 1rem;
   font-size: 1.5rem;
+  margin: 0 1rem;
   transition: color 0.3s ease;
 }
 
@@ -481,58 +305,87 @@ footer {
   color: var(--hud-blue);
 }
 
-/* ===== Responsive Design ===== */
+
+.lock-icon {
+  width: 100px;  /* Your desired size */
+  height: 100px;
+  fill: none;
+  stroke: green;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 5px green); /* Glow effect */
+  animation: float 3s ease-in-out infinite; /* Floating effect */
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+
+/* SVG in <img> tag */
+.chain-icon {
+  width: 30px;
+  height: 30px;
+}
+.chain-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .hamburger {
-      display: block;
-  }
-
-  .nav-menu {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background: var(--cyber-black);
-      padding: 1rem 0;
-  }
-
-  .nav-menu.active {
-      display: flex;
-  }
-
-  #blockchain-canvas {
-      display: none;
-  }
-
-  .service-grid,
-  .audit-grid,
-  .testimonial-grid {
-      grid-template-columns: 1fr;
-  }
-
-  .typing-text {
-      font-size: 1.8rem;
-  }
-
   .lock-icon {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
+  }
+  .chain-icon {
+      width: 25px;
+      height: 25px;
   }
 }
 
-@media (max-width: 480px) {
-  .typing-text {
-      font-size: 1.4rem;
-  }
 
-  section {
-      padding: 2rem 1rem;
-  }
 
-  .modal-content {
-      margin: 1rem;
-      padding: 1.5rem;
+.testimonial {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.testimonial:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.testimonial:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.testimonial:nth-child(3) {
+  animation-delay: 0.6s;
+}
+/* Add more delays for additional testimonials as needed */
+.testimonial {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+  .testimonial {
+    animation-duration: 0.3s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial {
+    animation: none;
   }
 }
