@@ -1,35 +1,46 @@
+import CryptoJS from 'crypto-js';
+
 export class SecurityManager {
   static initEncryptedComms() {
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const encryptedData = {
-        name: CryptoJS.AES.encrypt(form.name.value, 'SECURE_KEY').toString(),
-        email: CryptoJS.AES.encrypt(form.email.value, 'SECURE_KEY').toString(),
-        message: CryptoJS.AES.encrypt(form.message.value, 'SECURE_KEY').toString()
-      };
+    return new Promise((resolve) => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('contact-form');
+        
+        if (!form) {
+          console.warn('Contact form element not found');
+          return resolve(false);
+        }
 
-      try {
-        await fetch('/api/secure-contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(encryptedData)
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          try {
+            const encrypted = {
+              email: CryptoJS.AES.encrypt(form.email.value, 'SECRET_KEY').toString(),
+              message: CryptoJS.AES.encrypt(form.message.value, 'SECRET_KEY').toString()
+            };
+            
+            await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(encrypted)
+            });
+            
+            this.showHUD('Message securely transmitted');
+          } catch (error) {
+            this.showHUD('Secure transmission failed', true);
+          }
         });
-        this.showHUDNotification('Secure transmission successful');
-      } catch (error) {
-        this.showHUDError('Encrypted channel failure');
-      }
+        
+        resolve(true);
+      });
     });
   }
 
-  static showHUDNotification(message) {
+  static showHUD(message, isError = false) {
     const hud = document.createElement('div');
-    hud.className = 'cyber-hud';
-    hud.innerHTML = `
-      <span class="hud-icon">🔒</span>
-      <span class="hud-text">${message}</span>
-    `;
+    hud.className = `hud-notification ${isError ? 'error' : ''}`;
+    hud.textContent = message;
     document.body.appendChild(hud);
     setTimeout(() => hud.remove(), 3000);
   }

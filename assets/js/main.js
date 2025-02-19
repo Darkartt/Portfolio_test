@@ -1,6 +1,10 @@
 import { BlockchainVisualizer } from './three/blockchain-visualization.js';
 import { SecurityManager } from './security.js';
 
+// Add before other code
+if (chrome?.runtime?.lastError) {
+  chrome.runtime.lastError.message = '';
+}
 // Initialize Security (if applicable)
 SecurityManager.initEncryptedComms();
 
