@@ -227,10 +227,11 @@ document.addEventListener('DOMContentLoaded', function() {
         animate();
     }
     
-    // Quote Form Submission with Security Protections
+    // Quote Form Submission with Formspree Integration
     if (quoteForm) {
         quoteForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Form will be submitted to Formspree
+            // No need to prevent default behavior
             
             // Basic form validation
             const name = document.getElementById('name').value.trim();
@@ -244,68 +245,36 @@ document.addEventListener('DOMContentLoaded', function() {
             // Validation checks
             if (name.length < 2) {
                 alert('Please enter a valid name');
+                e.preventDefault();
                 return;
             }
             
             if (!emailRegex.test(email)) {
                 alert('Please enter a valid email address');
+                e.preventDefault();
                 return;
             }
             
             if (projectType === '') {
                 alert('Please select a project type');
+                e.preventDefault();
                 return;
             }
             
             if (message.length < 10) {
                 alert('Please provide more details about your project');
+                e.preventDefault();
                 return;
             }
             
-            // XSS Protection - Sanitize inputs
-            const sanitizeHTML = (str) => {
-                const temp = document.createElement('div');
-                temp.textContent = str;
-                return temp.innerHTML;
-            };
+            // XSS Protection - Sanitize inputs is handled by Formspree
             
-            // Get form data
-            const formData = new FormData(this);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                // Sanitize all values
-                formObject[key] = sanitizeHTML(value);
-            });
+            // Form will be submitted to Formspree which will handle the email delivery
+            // The page will be redirected to Formspree's thank you page after submission
             
-            // Add recipient email
-            formObject.recipientEmail = 'gti9377@gmail.com';
-            
-            // Add CSRF protection token (in a real app)
-            formObject.csrfToken = 'secure-token-would-be-here';
-            
-            // In a real application, you would send this data to a server
-            console.log('Form submitted with data:', formObject);
-            
-            // Email functionality would be implemented on the server side
-            // This is a client-side simulation
-            alert(`Your quote request will be sent to ${formObject.recipientEmail}. In a real application, this would be handled by a server.`);
-            
-            // Show success message
-            const formContainer = quoteForm.parentElement;
-            quoteForm.style.display = 'none';
-            
-            const successMessage = document.createElement('div');
-            successMessage.className = 'success-message';
-            successMessage.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <h3>Quote Request Received!</h3>
-                <p>Thank you for your interest. I'll review your project details and get back to you within 24 hours.</p>
-            `;
-            
-            formContainer.appendChild(successMessage);
-            
-            // Reset form (if you want to show it again later)
-            this.reset();
+            // We can add a custom success message by listening to the form submission success
+            // This is handled by Formspree's redirect or AJAX submission
+            console.log('Form validated and ready for Formspree submission');
         });
     }
     
