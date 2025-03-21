@@ -1,7 +1,0 @@
-{
-    "type": "module",
-    "dependencies": {
-        "crypto-js": "^4.2.0",
-        "three": "^0.128.0"
-    }
-}
