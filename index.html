@@ -29,6 +29,32 @@
       }
     }
     </script>
+    <title>DARKART :: Blockchain Security Expert</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/theme.css">
+    <link rel="stylesheet" href="./assets/css/layout.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    <link rel="stylesheet" href="./assets/css/utilities.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/home-button.png">
+
+    <!-- Import Map for ES6 modules -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Visualization Containers -->
@@ -190,7 +216,15 @@
                         <div class="audit-card__details">
                             <p class="audit-card__summary">Findings: High: 1, Medium: 1, Low: 0, Gas/Info: 1</p>
                             <a href="https://github.com/Darkartt/Audit_Reports/blob/main/BLACK%20PANDA%20REACH-CodeHawks-Escrow-Contract---Competition-Details.md" target="_blank" rel="noopener noreferrer" class="button audit-card__button">View Report</a>
+                        <div class="audit-card__details">
+                            <p class="audit-card__summary">Findings: High: 1, Medium: 1, Low: 0, Gas/Info: 1</p>
+                            <a href="https://github.com/Darkartt/Audit_Reports/blob/main/BLACK%20PANDA%20REACH-CodeHawks-Escrow-Contract---Competition-Details.md" target="_blank" rel="noopener noreferrer" class="button audit-card__button">View Report</a>
                         </div>
+                    </div>
+                     <div class="portfolio-item research-item" data-category="research"> 
+                        <h3 class="research-item__title">Flash Loan Vulnerability Research</h3>
+                        <p class="research-item__description">Analysis of flash loan attack vectors in DeFi</p>
+                        <a href="#" class="button research-item__button">View Details</a>
                     </div>
                      <div class="portfolio-item research-item" data-category="research"> 
                         <h3 class="research-item__title">Flash Loan Vulnerability Research</h3>
@@ -274,6 +308,36 @@
                 <div class="footer__bottom">
                     <p class="footer__copyright">&copy; 2025 DARKART. All rights reserved.</p>
                 </div>
+        <!-- Footer -->
+        <footer class="footer page-footer">
+            <div class="footer__container container">
+                <div class="footer__main-content">
+                    <div class="footer__column footer__column--logo">
+                        <h2 class="footer__logo-text">0x_darkart</h2>
+                        <p class="footer__tagline">Web3 Security Researcher</p>
+                    </div>
+                    <div class="footer__column footer__column--links">
+                        <h3 class="footer__heading">Quick Links</h3>
+                        <ul class="footer__list">
+                            <li class="footer__list-item"><a href="#about" class="footer__link">About</a></li>
+                            <li class="footer__list-item"><a href="#services" class="footer__link">Services</a></li>
+                            <li class="footer__list-item"><a href="#portfolio" class="footer__link">Portfolio</a></li>
+                            <li class="footer__list-item"><a href="#contact" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__column footer__column--social">
+                        <h3 class="footer__heading">Connect</h3>
+                        <div class="footer__social-icons">
+                            <a href="https://x.com/0x_Darkart" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/darkartt" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/velislav-tsvetanov-48432b2b4/" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-medium"></i></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2025 DARKART. All rights reserved.</p>
+                </div>
             </div>
         </footer>
     </div>
@@ -318,5 +382,46 @@
       }
       form.addEventListener("submit", handleSubmit)
     </script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+
+    <!-- Formspree AJAX Script -->
+    <script>
+      var form = document.getElementById("my-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            status.className = 'contact__form-status contact__form-status--success'; // Add class for styling
+            form.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form";
+              }
+              status.className = 'contact__form-status contact__form-status--error'; // Add class for styling
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form";
+          status.className = 'contact__form-status contact__form-status--error'; // Add class for styling
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
 </body>
 </html>
+
