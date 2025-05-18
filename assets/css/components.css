@@ -1,0 +1,841 @@
+/* === Button Component === */
+.button {
+  display: inline-block;
+  font-family: var(--font-secondary); /* 'Press Start 2P' */
+  font-size: 0.8rem; /* Adjusted base font size for buttons */
+  text-transform: uppercase;
+  color: var(--color-background); /* Text color for solid button */
+  background-color: var(--color-accent-primary); /* Solid background by default */
+  border: 1px solid var(--color-accent-primary); /* Can be 1px or 2px */
+  padding: var(--spacing-sm) var(--spacing-lg); /* e.g., 8px 16px or 8px 24px */
+  border-radius: 25px; /* Pill shape by default */
+  transition: var(--transition-medium);
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none; /* Ensure links styled as buttons don't have underline */
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--color-surface); /* Darken or change on hover */
+  color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-glow-accent); /* Subtle glow on hover */
+  text-decoration: none;
+}
+
+/* Modifier for primary button (if different from base, otherwise it's just .button) */
+.button--primary {
+  /* Inherits .button styles, primary is now the default filled look */
+}
+
+/* Modifier for secondary/outline button */
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary); /* Or 2px for stronger outline */
+}
+
+.button--secondary:hover,
+.button--secondary:focus {
+  background-color: var(--color-accent-primary);
+  color: var(--color-background);
+}
+
+/* === Loader Component === */
+.loader {
+  display: none; /* Hidden by default, JS will show it */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center it precisely */
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--color-accent-primary);
+  border-top-color: transparent; /* Creates the spinning effect */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* spin animation will be in animations.css */
+  z-index: 9999; /* Ensure it's on top */
+}
+
+/* === Scroll Progress Component === */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px; /* Or var(--spacing-xs) */
+  background-color: var(--color-accent-primary);
+  width: 0%; /* JS will update this */
+  z-index: 9998; /* Just below loader */
+  transition: width 0.1s linear; /* Smooth width transition */
+}
+
+/* === Section Title Component === */
+.section-title {
+  font-family: var(--font-secondary); /* 'Press Start 2P' */
+  font-size: 2rem; /* Default h2 size, can be overridden by element specific styles */
+  color: var(--color-accent-primary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-xxl); /* More space after title */
+  position: relative;
+  padding-bottom: var(--spacing-md);
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-accent-primary);
+  margin: var(--spacing-sm) auto 0;
+  box-shadow: var(--shadow-glow-accent);
+}
+
+/* === Navigation Component === */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  padding: var(--spacing-sm) 0; /* Reduced padding */
+  z-index: 1000; /* High z-index to stay on top */
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Matches .container from layout.css */
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg); /* Consistent padding */
+}
+
+.nav__logo img {
+  height: 40px; /* Reduced height */
+  width: auto;
+  transition: var(--transition-medium);
+}
+
+.nav__logo:hover img,
+.nav__logo:focus img {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.nav__menu {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.nav__link {
+  font-family: var(--font-secondary); /* 'Press Start 2P' */
+  font-size: 0.8rem; /* Slightly reduced font size */
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) 0; /* Reduced padding */
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent-primary);
+  transition: var(--transition-fast);
+}
+
+.nav__link:hover::after,
+.nav__link:focus::after {
+  width: 100%;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  color: var(--color-accent-primary); /* Highlight on hover/focus */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Specific styling for the contact button in the nav if needed */
+.nav__button {
+  font-size: 0.8rem; /* Slightly smaller than default button if desired */
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+/* CTA Link in Nav will now use the base .button style. 
+   If specific tweaks are needed for nav__link--cta beyond the base .button, they can be added here.
+   For now, it will inherit the new .button look.
+   The .nav__link class itself might have padding that affects it, ensure .nav__link--cta.button overrides if needed.
+*/
+.nav__link.button { /* Ensure nav links styled as buttons behave well */
+    padding: var(--spacing-sm) var(--spacing-lg); /* Override .nav__link padding */
+}
+
+
+/* Responsive Navigation (e.g., for a burger menu - not implemented in HTML yet) */
+@media (max-width: 768px) {
+  .nav__menu {
+    /* display: none; */ /* Example: Hide for burger menu, or transform into column */
+    gap: var(--spacing-md); /* Reduce gap on smaller screens if still visible */
+  }
+  .nav__link {
+    font-size: 0.8rem;
+  }
+  .nav__button {
+    display: none; /* Example: hide contact button on small screens or move to menu */
+  }
+}
+
+/* === Terminal Component === */
+.terminal {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-glow-accent);
+  width: 100%;
+  max-width: 800px; /* Or adjust as needed */
+  margin: 0 auto; /* Centered in its container (hero section) */
+  overflow: hidden;
+}
+
+.terminal__header {
+  background-color: #1E1E1E; /* Darker header for contrast */
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.terminal__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal__dot--red { background-color: var(--color-error); }
+.terminal__dot--yellow { background-color: var(--color-warning); }
+.terminal__dot--green { background-color: var(--color-success); }
+
+.terminal__body {
+  padding: var(--spacing-lg);
+  min-height: 200px; /* Adjust as needed */
+  font-family: var(--font-primary); /* Roboto Mono for terminal text */
+  font-size: 1rem;
+  color: var(--color-accent-primary); /* Green text */
+  line-height: 1.8;
+  overflow-y: auto; /* If content exceeds height */
+}
+
+.terminal__output-text {
+  white-space: pre-wrap; /* Preserve whitespace and newlines */
+  word-break: break-all;
+}
+
+/* Blinking cursor for terminal (animation defined in animations.css) */
+.terminal__output-text::after {
+  content: '█'; /* Block cursor */
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: var(--color-accent-primary);
+  margin-left: var(--spacing-xs);
+}
+
+/* === Service Grid Component === */
+.service-grid {
+  /* Grid layout defined in layout.css, component-specific overrides here if needed */
+  /* Example: Define columns for larger screens */
+  width: 100%; /* Ensure it takes full width of its container */
+}
+
+@media (min-width: 768px) {
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* === Service Card Component === */
+.service-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Softer shadow */
+}
+
+.service-card:hover,
+.service-card:focus-within { /* For keyboard navigation */
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow-accent-hover);
+  border-color: var(--color-accent-primary);
+}
+
+.service-card__icon {
+  font-size: 2.5rem; /* Adjust as needed */
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-md);
+  display: block; /* Ensure it's a block for margin to work correctly */
+}
+
+.service-card__title {
+  font-family: var(--font-secondary);
+  font-size: 1.25rem; /* h3 size */
+  color: var(--color-text-primary); /* Overriding default heading color for cards */
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card__description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+}
+
+.service-card__button {
+  /* Uses global .button styles, add specific overrides if needed */
+  margin-top: auto; /* Pushes button to bottom if card is flex column */
+}
+
+/* Optional: If service-card itself is a flex container for its content */
+/*
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+*/
+
+/* === Audit Grid Component === */
+.audit-grid {
+  /* Grid layout defined in layout.css, component-specific overrides here if needed */
+  width: 100%; /* Ensure it takes full width of its container */
+}
+
+@media (min-width: 768px) {
+  .audit-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Slightly wider minmax for audit cards */
+  }
+}
+
+/* === Audit Card Component === */
+.audit-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg); /* Slightly less padding than service card if desired */
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; /* To allow button to be pushed to bottom */
+}
+
+.audit-card:hover,
+.audit-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow-accent-hover);
+  border-color: var(--color-accent-primary);
+}
+
+.audit-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border); /* Separator for header */
+  padding-bottom: var(--spacing-sm);
+}
+
+.audit-card__title {
+  font-family: var(--font-primary); /* Roboto Mono for a more "report" feel */
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  font-weight: 700; /* Bold */
+}
+
+.audit-card__risk {
+  font-family: var(--font-secondary); /* Press Start 2P for risk level */
+  font-size: 0.75rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  color: var(--color-background); /* Text color for risk badge */
+}
+
+.audit-card__risk--high { background-color: var(--color-error); }
+.audit-card__risk--medium { background-color: var(--color-warning); } /* Assuming a medium risk state */
+.audit-card__risk--low { background-color: var(--color-success); }   /* Assuming a low risk state */
+
+.audit-card__details {
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1; /* Allows this section to grow, pushing button down */
+}
+
+.audit-card__findings-list {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  padding-left: 0; /* Remove default ul padding if desired, or keep for indentation */
+  list-style-type: none; /* Remove default bullets */
+}
+
+.audit-card__finding-item {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.audit-card__finding-item::before {
+  content: '▹'; /* Custom bullet */
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
+}
+
+.audit-card__button {
+  /* Uses global .button styles */
+  margin-top: auto; /* Pushes button to bottom */
+  width: 100%; /* Make button full width of card */
+}
+
+/* === Testimonials Component === */
+.testimonials__content {
+  /* Placeholder for testimonial items */
+  /* Example:
+  display: grid;
+  gap: var(--spacing-lg);
+  */
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* === Footer Component === */
+.footer { /* .page-footer class is also on the HTML element for layout spacing */
+  background-color: var(--color-surface); /* Slightly different from main bg */
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  margin-top: var(--spacing-xxl); /* Ensure space above footer */
+}
+
+.footer__container {
+  /* Uses .container class from layout.css for width and centering */
+}
+
+.footer__copyright {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0; /* Remove default p margin */
+}
+
+/* Add more footer elements like social links if needed */
+/*
+.footer__social-links {
+  margin-top: var(--spacing-md);
+}
+.footer__social-link {
+  display: inline-block;
+  margin: 0 var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+.footer__social-link:hover {
+  color: var(--color-accent-primary);
+}
+*/
+
+/* === About Section Component === */
+.about { /* page-section class provides base padding */ }
+
+.about__container { /* Uses .container for width */ }
+
+.about__content {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about__content {
+    grid-template-columns: 1fr 2fr; /* Image | Text */
+  }
+}
+
+.about__image-container {
+  text-align: center;
+}
+
+.about__image {
+  max-width: 300px; /* Adjust as needed */
+  border-radius: 50%; /* Circular image */
+  border: 3px solid var(--color-accent-primary);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.about__text {
+  text-align: left;
+}
+
+.about__subheading {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.about__expertise-title {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  color: var(--color-accent-primary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about__expertise-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about__expertise-item {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  position: relative;
+  color: var(--color-text-secondary);
+}
+
+.about__expertise-item::before {
+  content: '✓'; /* Checkmark or other icon */
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
+}
+
+.about__social-links {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.about__social-link {
+  font-size: 1.5rem; /* Icon size */
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.about__social-link:hover,
+.about__social-link:focus {
+  color: var(--color-accent-primary);
+  transform: scale(1.1);
+}
+
+
+/* === Portfolio Section Components === */
+.portfolio__filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.portfolio__filters .button { /* Style for filter buttons */
+  font-size: 0.8rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.portfolio__filters .button.active,
+.portfolio__filters .button:hover {
+  border-color: var(--color-accent-primary);
+  background-color: var(--color-accent-primary);
+  color: var(--color-background);
+}
+
+.portfolio-grid { /* General grid for portfolio items, uses audit-grid styles from layout */
+   /* Styles for .audit-card are already defined and will be used for portfolio items of type audit */
+}
+
+.portfolio-item { /* Base class for all portfolio items if needed for filtering JS */
+  /* Common styles for all portfolio items if any */
+  /* For now, specific item types like .audit-card or .research-item will define looks */
+}
+
+.research-item { /* Example for a different type of portfolio item */
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.research-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow-accent-hover);
+  border-color: var(--color-accent-primary);
+}
+.research-item__title {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+.research-item__description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.research-item__button {
+  margin-top: var(--spacing-md);
+}
+
+/* Blog styles removed */
+
+/* === Contact Section Components === */
+.contact__content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xxl);
+}
+
+@media (min-width: 992px) { /* Larger breakpoint for side-by-side */
+  .contact__content-wrapper {
+    grid-template-columns: 1fr 1.5fr; /* Info | Form */
+  }
+}
+
+.contact__info-title {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact__info-text {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact__detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+.contact__detail-icon {
+  color: var(--color-accent-primary);
+  font-size: 1.2rem;
+}
+
+.contact__form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact__form-label {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.contact__form-input,
+.contact__form-select,
+.contact__form-textarea {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.contact__form-input:focus,
+.contact__form-select:focus,
+.contact__form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.contact__form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact__form-submit {
+  /* Uses .button and .button--primary styles */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .contact__form-submit {
+    width: auto; /* Auto width on larger screens */
+  }
+}
+
+.contact__form-status {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.contact__form-status--success {
+  background-color: rgba(0, 255, 127, 0.1); /* Light green background */
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.contact__form-status--error {
+  background-color: rgba(255, 49, 49, 0.1); /* Light red background */
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+
+/* === Footer Component (Extended) === */
+.footer__main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  text-align: center; /* Center content in columns on small screens */
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .footer__main-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    text-align: left; /* Align left on larger screens */
+  }
+}
+
+.footer__column--logo .footer__logo-text { /* Specific for logo text if different from h2 */
+  font-size: 1.8rem; /* Adjust as needed */
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-xs);
+}
+.footer__column--logo .footer__tagline {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.footer__heading {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer__list-item {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__link {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+}
+
+.footer__social-icons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center; /* Center icons on small screens */
+}
+
+@media (min-width: 768px) {
+  .footer__social-icons {
+    justify-content: flex-start; /* Align left on larger screens */
+  }
+}
+
+.footer__social-icon {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+}
+
+.footer__social-icon:hover,
+.footer__social-icon:focus {
+  color: var(--color-accent-primary);
+  transform: scale(1.1);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* Theme Toggle styles removed */
+
+/* === Nav Burger (Mobile Menu Toggle) === */
+.nav__burger {
+  display: none; /* Hidden by default, shown on mobile */
+  cursor: pointer;
+}
+
+.nav__burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  margin: 5px 0;
+  transition: var(--transition-medium);
+}
+
+@media (max-width: 768px) { /* Show burger on mobile */
+  .nav__burger {
+    display: block;
+  }
+  .nav__menu { /* Hide original menu, JS will toggle a mobile version */
+    display: none;
+    /* Styles for active mobile menu (flex column, position absolute etc.) would go here,
+       toggled by JS by adding an .is-active class to .nav__menu or a wrapper */
+  }
+  .nav__link--cta { /* Hide Get a Quote text button on mobile if burger is present */
+      display: none;
+  }
+}
+
+/* Example for active mobile menu (JS would toggle .nav__menu--active) */
+/*
+.nav__menu--active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; // Below the nav bar
+  left: 0;
+  width: 100%;
+  background-color: var(--color-surface); // Or nav background
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  align-items: center;
+}
+.nav__menu--active .nav__link {
+  padding: var(--spacing-md) 0;
+  width: 100%;
+  text-align: center;
+}
+*/

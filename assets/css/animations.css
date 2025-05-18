@@ -1,0 +1,76 @@
+/* === Spin Animation (for .loader) === */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Blink Animation (for .terminal__output-text::after) === */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* === Glitch Effect (for .glitch-effect class on section titles) === */
+.glitch-effect {
+  animation: glitch 0.65s infinite steps(1); /* steps(1) for a more jerky glitch */
+  position: relative; /* Needed for pseudo-elements if used */
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-error);
+    transform: translate(0, 0);
+  }
+  10% {
+    text-shadow: -1px 0 var(--color-accent-secondary), 1px 0 var(--color-error);
+    transform: translate(-1px, 1px);
+  }
+  20% {
+    text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-error);
+    transform: translate(1px, -1px);
+  }
+  30% {
+    text-shadow: 0.5px 0 var(--color-accent-secondary), -0.5px 0 var(--color-error);
+    transform: translate(0, 0);
+  }
+  40% {
+    text-shadow: none;
+    transform: translate(1px, 1px);
+  }
+  50% {
+    text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-error);
+    transform: translate(0, 0);
+  }
+  60% {
+    text-shadow: none;
+    transform: translate(-1px, -1px);
+  }
+  70% {
+    text-shadow: -1px 0 var(--color-accent-secondary), 1px 0 var(--color-error);
+    transform: translate(0, 0);
+  }
+  80% {
+    text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-error);
+    transform: translate(1px, 0);
+  }
+  90% {
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+  100% {
+    text-shadow: -1px 0 var(--color-accent-secondary), 1px 0 var(--color-error);
+    transform: translate(0, 0);
+  }
+}
+
+/* === Section Entry Animations === */
+.section-entry {
+  opacity: 0; /* Restored */
+  transform: translateY(50px); /* Start slightly lower */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-entry--visible {
+  opacity: 1;
+  transform: translateY(0);
+}

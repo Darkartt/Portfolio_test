@@ -1,0 +1,95 @@
+/* Reset and Box Sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML Basic Setup */
+html {
+  font-size: 100%; /* Corresponds to 16px by default */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body Defaults */
+body {
+  font-family: var(--font-primary);
+  font-size: 1rem; /* Base font size */
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  overflow-x: hidden; /* From original inline style */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary); /* Using 'Press Start 2P' for headings */
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; } /* Example sizes, can be adjusted */
+h2 { font-size: 2rem; }   /* .section-title will override this for specific titles */
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Links */
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent-secondary);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  list-style-position: inside;
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-md); /* Indent list items */
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Images & Media */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Form Elements (Basic Styling) */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Basic Button Reset (more specific button styling in components.css) */
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}

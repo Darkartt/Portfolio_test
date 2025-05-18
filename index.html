@@ -3,315 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; font-src https://cdnjs.cloudflare.com; img-src 'self' data:;">
-    <title>Web3 Security Researcher Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>DARKART :: Blockchain Security Expert</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/theme.css">
+    <link rel="stylesheet" href="./assets/css/layout.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    <link rel="stylesheet" href="./assets/css/utilities.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/home-button.png">
+
+    <!-- Import Map for ES6 modules -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>0x_darkart</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact" class="cta-btn">Get a Quote</a></li>
-                <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+    <!-- Visualization Containers -->
+    <div id="blockchain-viz"></div>
+    <div id="particles-container"></div>
+
+    <!-- Loading Animation -->
+    <div class="loader"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Main Content -->
+    <div id="content-wrapper">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav__container">
+                <a href="#home" class="nav__logo">
+                    <img src="./assets/images/home-button.png" alt="DARKART Logo">
+                </a>
+                <div class="nav__menu">
+                    <a href="#about" class="nav__link">About</a>
+                    <a href="#services" class="nav__link">Services</a>
+                    <a href="#portfolio" class="nav__link">Portfolio</a> 
+                    <a href="#contact" class="nav__link nav__link--cta button">Get a Quote</a> 
+                </div>
+                <div class="nav__burger">
+                    <div class="nav__burger-line"></div>
+                    <div class="nav__burger-line"></div>
+                    <div class="nav__burger-line"></div>
+                </div>
             </div>
         </nav>
-    </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Web3 Security Research & Auditing</h1>
-            <p>Protecting blockchain projects through expert security analysis and vulnerability detection</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="btn primary-btn">View My Work</a>
-                <a href="#contact" class="btn secondary-btn">Request a Quote</a>
-            </div>
-        </div>
-    </section>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section id="home" class="page-section hero">
+                <div class="hero__content container u-text-center">
+                    <h1 class="hero__title">Web3 Security Research & Auditing</h1>
+                    <p class="hero__subtitle">Protecting blockchain projects through expert security analysis and vulnerability detection</p>
+                    <div class="hero__buttons">
+                        <a href="#portfolio" class="button button--primary hero__button">View My Work</a>
+                        <a href="#contact" class="button button--secondary hero__button">Request a Quote</a>
+                    </div>
+                </div>
+                <div class="terminal hero__terminal">
+                    <div class="terminal__header">
+                        <span class="terminal__dot terminal__dot--red"></span>
+                        <span class="terminal__dot terminal__dot--yellow"></span>
+                        <span class="terminal__dot terminal__dot--green"></span>
+                    </div>
+                    <div class="terminal__body">
+                        <p id="terminal-output" class="terminal__output-text">> Initializing security protocols...
+> System ready. Welcome, 0x_darkart.</p> 
+                    </div>
+                </div>
+            </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="img/profile-placeholder.jpg" alt="Profile Image">
-                </div>
-                <div class="about-text">
-                    <h3>Web3 Security Researcher</h3>
-                    <p>I'm a passionate web3 security researcher and auditor with a focus on smart contract vulnerabilities and DeFi protocol security. My mission is to strengthen the blockchain ecosystem by identifying and mitigating security risks before they can be exploited.</p>
-                    <p>With years of experience in both traditional cybersecurity and blockchain technology, I've helped numerous projects secure their code and protect user funds. I regularly share my findings and research to educate the community about emerging threats and best practices.</p>
-                    <p>My expertise includes:</p>
-                    <ul>
-                        <li>Smart Contract Auditing & Vulnerability Research</li>
-                        <li>DeFi Protocol Security Assessment</li>
-                        <li>Cross-chain Bridge Security Analysis</li>
-                        <li>MEV & Flash Loan Attack Prevention</li>
-                        <li>Security Best Practices & Training</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="https://x.com/0x_Darkart" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://github.com/darkartt" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/velislav-tsvetanov-48432b2b4/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Smart Contract Audits</h3>
-                    <p>Comprehensive security reviews of smart contracts to identify vulnerabilities before deployment.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Security Research</h3>
-                    <p>In-depth research on emerging attack vectors and security patterns in the Web3 space.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Code Reviews</h3>
-                    <p>Detailed analysis of blockchain application code to ensure security and best practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Security Training</h3>
-                    <p>Customized training sessions for development teams on blockchain security principles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="audit">Audits</button>
-                <button class="filter-btn" data-filter="research">Research</button>
-                <button class="filter-btn" data-filter="consulting">Consulting</button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item audit">
-                    <img src="img/portfolio/aiarena.jpg" alt="AI Arena">
-                    <div class="portfolio-overlay">
-                        <h3>C4 Competition</h3>
-                        <p>2 High
-
-                            1 Med</p>
-                        <a href="https://code4rena.com/@Velislav4o" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-item research">
-                    <img src="img/portfolio/research1.jpg" alt="Project 2">
-                    <div class="portfolio-overlay">
-                        <h3>Flash Loan Vulnerability Research</h3>
-                        <p>Analysis of flash loan attack vectors in DeFi</p>
-                        <a href="#" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-item audit">
-                    <img src="img/portfolio/codehawks.jpg" alt="Project 3">
-                    <div class="portfolio-overlay">
-                        <h3>Foundry DeFi Stablecoin</h3>
-                        <p>High: 2
-                            Medium: 3</p>
-                        <a href="https://github.com/Darkartt/Audit_Reports/blob/main/Foundry-DeFi-Stablecoin-CodeHawks-Audit-Contest.md" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-item consulting">
-                    <img src="img/portfolio/consulting1.jpg" alt="Project 4">
-                    <div class="portfolio-overlay">
-                        <h3>Security Architecture Consulting</h3>
-                        <p>Designing secure infrastructure for a Web3 startup</p>
-                        <a href="#" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-item research">
-                    <img src="img/portfolio/research2.jpg" alt="Project 5">
-                    <div class="portfolio-overlay">
-                        <h3>Cross-chain Bridge Security</h3>
-                        <p>Research on vulnerabilities in cross-chain bridges</p>
-                        <a href="#" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-item audit">
-                    <img src="img/portfolio/codehawks.jpg" alt="Project 6">
-                    <div class="portfolio-overlay">
-                        <h3>CodeHawks Escrow Contract</h3>
-                        <p>High: 1
-                            Medium: 1
-                            Low: 0
-                            Gas/Info: 1</p>
-                        <a href="https://github.com/Darkartt/Audit_Reports/blob/main/BLACK%20PANDA%20REACH-CodeHawks-Escrow-Contract---Competition-Details.md" class="portfolio-link">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog">
-        <div class="container">
-            <h2 class="section-title">Latest Blog Posts</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="img/blog/blog1.jpg" alt="Blog Post 1">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">March 15, 2025</div>
-                        <h3>Understanding Reentrancy Attacks in Smart Contracts</h3>
-                        <p>An in-depth analysis of reentrancy vulnerabilities and how to prevent them in your smart contracts.</p>
-                        <a href="blog/reentrancy-attacks.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="img/blog/blog2.jpg" alt="Blog Post 2">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">February 28, 2025</div>
-                        <h3>The Rise of MEV and Its Impact on DeFi Security</h3>
-                        <p>Exploring Miner Extractable Value and how it affects the security landscape of decentralized finance.</p>
-                        <a href="blog/mev-impact.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="img/blog/blog3.jpg" alt="Blog Post 3">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">January 20, 2025</div>
-                        <h3>Security Considerations for ERC-721 Implementations</h3>
-                        <p>Key security aspects to consider when implementing NFT contracts on Ethereum.</p>
-                        <a href="blog/erc721-security.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-cta">
-                <a href="blog.html" class="btn primary-btn">View All Posts</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get a Quote</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Secure Your Project</h3>
-                    <p>Interested in working together? Fill out the form with details about your project, and I'll get back to you with a custom quote.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>gti9377@gmail.com</span>
+            <!-- About Me Section -->
+            <section id="about" class="page-section about section-entry">
+                <div class="container about__container">
+                    <h2 class="section-title about__title">About Me</h2>
+                    <div class="about__content">
+                        <div class="about__image-container">
+                            <img src="./assets/images/profile-placeholder.jpg" alt="0x_darkart Profile" class="about__image"> 
+                        </div>
+                        <div class="about__text">
+                            <h3 class="about__subheading">Web3 Security Researcher</h3>
+                            <p>I'm a passionate web3 security researcher and auditor with a focus on smart contract vulnerabilities and DeFi protocol security. My mission is to strengthen the blockchain ecosystem by identifying and mitigating security risks before they can be exploited.</p>
+                            <p>With years of experience in both traditional cybersecurity and blockchain technology, I've helped numerous projects secure their code and protect user funds. I regularly share my findings and research to educate the community about emerging threats and best practices.</p>
+                            <h4 class="about__expertise-title">My expertise includes:</h4>
+                            <ul class="about__expertise-list">
+                                <li class="about__expertise-item">Smart Contract Auditing & Vulnerability Research</li>
+                                <li class="about__expertise-item">DeFi Protocol Security Assessment</li>
+                                <li class="about__expertise-item">Cross-chain Bridge Security Analysis</li>
+                                <li class="about__expertise-item">MEV & Flash Loan Attack Prevention</li>
+                                <li class="about__expertise-item">Security Best Practices & Training</li>
+                            </ul>
+                            <div class="about__social-links">
+                                <a href="https://x.com/0x_Darkart" target="_blank" rel="noopener noreferrer" class="about__social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="https://github.com/darkartt" target="_blank" rel="noopener noreferrer" class="about__social-link"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/velislav-tsvetanov-48432b2b4/" target="_blank" rel="noopener noreferrer" class="about__social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="about__social-link"><i class="fab fa-medium"></i></a> 
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="quote-form" action="https://formspree.io/f/maneygad" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="project-type">Project Type</label>
-                            <select id="project-type" name="project-type" required>
-                                <option value="">Select a service</option>
-                                <option value="smart-contract-audit">Smart Contract Audit</option>
-                                <option value="defi-protocol-audit">DeFi Protocol Audit</option>
-                                <option value="security-consulting">Security Consulting</option>
-                                <option value="code-review">Code Review</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="timeline">Timeline</label>
-                            <select id="timeline" name="timeline" required>
-                                <option value="">Select a timeline</option>
-                                <option value="urgent">Urgent (1-3 days)</option>
-                                <option value="standard">Standard (1-2 weeks)</option>
-                                <option value="flexible">Flexible (2+ weeks)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Project Details</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary-btn">Request Quote</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>0x_darkart</h2>
-                    <p>Web3 Security Researcher</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h3>Connect</h3>
-                    <div class="social-icons">
-                        <a href="https://x.com/0x_Darkart" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://github.com/darkartt" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/velislav-tsvetanov-48432b2b4/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
+            <!-- Services Section -->
+            <section id="services" class="page-section services section-entry">
+                <h2 class="section-title services__title glitch-effect">SECURITY SERVICES</h2>
+                <div class="service-grid services__grid container">
+                    <div class="service-card">
+                        <div class="service-card__icon-container"><i class="fas fa-shield-alt service-card__icon"></i></div>
+                        <h3 class="service-card__title">Smart Contract Audits</h3>
+                        <p class="service-card__description">Comprehensive security reviews of smart contracts to identify vulnerabilities before deployment.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon-container"><i class="fas fa-search service-card__icon"></i></div>
+                        <h3 class="service-card__title">Security Research</h3>
+                        <p class="service-card__description">In-depth research on emerging attack vectors and security patterns in the Web3 space.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon-container"><i class="fas fa-code service-card__icon"></i></div>
+                        <h3 class="service-card__title">Code Reviews</h3>
+                        <p class="service-card__description">Detailed analysis of blockchain application code to ensure security and best practices.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon-container"><i class="fas fa-graduation-cap service-card__icon"></i></div>
+                        <h3 class="service-card__title">Security Training</h3>
+                        <p class="service-card__description">Customized training sessions for development teams on blockchain security principles.</p>
                     </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 0x_darkart. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+            </section>
 
-    <!-- 3D Grid Background Canvas -->
-    <canvas id="grid-bg" class="grid-background"></canvas>
-    
-    <script src="js/main.js"></script>
+            <!-- Portfolio Section (replaces old Audits section) -->
+            <section id="portfolio" class="page-section portfolio section-entry"> 
+                <h2 class="section-title portfolio__title glitch-effect">Portfolio</h2>
+                <div class="portfolio__filters container">
+                    <button class="button filter-btn active" data-filter="all">All</button>
+                    <button class="button filter-btn" data-filter="audit">Audits</button>
+                    <button class="button filter-btn" data-filter="research">Research</button>
+                    <button class="button filter-btn" data-filter="consulting">Consulting</button>
+                </div>
+                <div class="portfolio-grid portfolio__grid container">
+                     <div class="portfolio-item audit-card" data-category="audit"> 
+                        <div class="audit-card__header">
+                            <h3 class="audit-card__title">AI Arena (C4 Competition)</h3>
+                        </div>
+                        <div class="audit-card__details">
+                            <p class="audit-card__summary">Findings: 2 High, 1 Medium</p>
+                            <a href="https://code4rena.com/@Velislav4o" target="_blank" rel="noopener noreferrer" class="button audit-card__button">View Details</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item audit-card" data-category="audit">
+                        <div class="audit-card__header">
+                            <h3 class="audit-card__title">Foundry DeFi Stablecoin (CodeHawks)</h3>
+                        </div>
+                        <div class="audit-card__details">
+                            <p class="audit-card__summary">Findings: High: 2, Medium: 3</p>
+                            <a href="https://github.com/Darkartt/Audit_Reports/blob/main/Foundry-DeFi-Stablecoin-CodeHawks-Audit-Contest.md" target="_blank" rel="noopener noreferrer" class="button audit-card__button">View Report</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item audit-card" data-category="audit">
+                        <div class="audit-card__header">
+                            <h3 class="audit-card__title">Escrow Contract (CodeHawks)</h3>
+                        </div>
+                        <div class="audit-card__details">
+                            <p class="audit-card__summary">Findings: High: 1, Medium: 1, Low: 0, Gas/Info: 1</p>
+                            <a href="https://github.com/Darkartt/Audit_Reports/blob/main/BLACK%20PANDA%20REACH-CodeHawks-Escrow-Contract---Competition-Details.md" target="_blank" rel="noopener noreferrer" class="button audit-card__button">View Report</a>
+                        </div>
+                    </div>
+                     <div class="portfolio-item research-item" data-category="research"> 
+                        <h3 class="research-item__title">Flash Loan Vulnerability Research</h3>
+                        <p class="research-item__description">Analysis of flash loan attack vectors in DeFi</p>
+                        <a href="#" class="button research-item__button">View Details</a>
+                    </div>
+                </div>
+            </section>
+            
+           
+            
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="page-section testimonials section-entry">
+                <h2 class="section-title testimonials__title glitch-effect">CLIENT TESTIMONIALS</h2>
+                <div class="testimonials__content container">
+                    <p class="u-text-center">Testimonial content could not be found in the provided GitHub repository. Please provide content to populate this section.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="page-section contact section-entry">
+                <div class="container contact__container">
+                    <h2 class="section-title contact__title">Get a Quote</h2>
+                    <div class="contact__content-wrapper">
+                        <div class="contact__info">
+                            <h3 class="contact__info-title">Let's Secure Your Project</h3>
+                            <p class="contact__info-text">Interested in working together? Fill out the form with details about your project, and I'll get back to you with a custom quote.</p>
+                            <div class="contact__details">
+                                <div class="contact__detail-item">
+                                    <i class="fas fa-envelope contact__detail-icon"></i>
+                                <span class="contact__detail-text">gti37@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="my-form" class="contact__form" action="https://formspree.io/f/maneygad" method="POST">
+                            <div class="form-group contact__form-group">
+                                <label for="form-email" class="form-label contact__form-label">Email:</label>
+                                <input type="email" id="form-email" name="email" class="form-input contact__form-input" required />
+                            </div>
+                            <div class="form-group contact__form-group">
+                                <label for="form-message" class="form-label contact__form-label">Message:</label>
+                                <textarea id="form-message" name="message" rows="5" class="form-textarea contact__form-textarea" required></textarea> {/* Changed input type text to textarea for message */}
+                            </div>
+                            <button type="submit" id="my-form-button" class="button button--primary contact__form-submit">Submit</button>
+                            <p id="my-form-status" class="contact__form-status"></p>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer page-footer">
+            <div class="footer__container container">
+                <div class="footer__main-content">
+                    <div class="footer__column footer__column--logo">
+                        <h2 class="footer__logo-text">0x_darkart</h2>
+                        <p class="footer__tagline">Web3 Security Researcher</p>
+                    </div>
+                    <div class="footer__column footer__column--links">
+                        <h3 class="footer__heading">Quick Links</h3>
+                        <ul class="footer__list">
+                            <li class="footer__list-item"><a href="#about" class="footer__link">About</a></li>
+                            <li class="footer__list-item"><a href="#services" class="footer__link">Services</a></li>
+                            <li class="footer__list-item"><a href="#portfolio" class="footer__link">Portfolio</a></li>
+                            <li class="footer__list-item"><a href="#contact" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__column footer__column--social">
+                        <h3 class="footer__heading">Connect</h3>
+                        <div class="footer__social-icons">
+                            <a href="https://x.com/0x_Darkart" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/darkartt" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/velislav-tsvetanov-48432b2b4/" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="footer__social-icon"><i class="fab fa-medium"></i></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2025 DARKART. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+
+    <!-- Formspree AJAX Script -->
+    <script>
+      var form = document.getElementById("my-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            status.className = 'contact__form-status contact__form-status--success'; // Add class for styling
+            form.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form";
+              }
+              status.className = 'contact__form-status contact__form-status--error'; // Add class for styling
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form";
+          status.className = 'contact__form-status contact__form-status--error'; // Add class for styling
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
 </body>
 </html>

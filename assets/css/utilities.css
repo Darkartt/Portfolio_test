@@ -1,0 +1,59 @@
+/* === Text Alignment Utilities === */
+.u-text-left { text-align: left !important; }
+.u-text-center { text-align: center !important; }
+.u-text-right { text-align: right !important; }
+.u-text-justify { text-align: justify !important; }
+
+/* === Display Utilities === */
+.u-display-block { display: block !important; }
+.u-display-inline { display: inline !important; }
+.u-display-inline-block { display: inline-block !important; }
+.u-display-flex { display: flex !important; }
+.u-display-inline-flex { display: inline-flex !important; }
+.u-display-grid { display: grid !important; }
+.u-display-none { display: none !important; } /* For hiding elements */
+
+/* === Visually Hidden (for accessibility) === */
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important; /* Fix for RTL */
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important; /* For single line content */
+  border: 0 !important;
+}
+
+/* === Spacing Utilities (Example for margins) === */
+/* You can expand this with padding, different sides (mt, mb, ml, mr, pt, pb, etc.), and more sizes */
+
+/* Margin All Sides */
+.u-m-0 { margin: 0 !important; }
+.u-m-xs { margin: var(--spacing-xs) !important; }
+.u-m-sm { margin: var(--spacing-sm) !important; }
+.u-m-md { margin: var(--spacing-md) !important; }
+.u-m-lg { margin: var(--spacing-lg) !important; }
+.u-m-xl { margin: var(--spacing-xl) !important; }
+.u-m-xxl { margin: var(--spacing-xxl) !important; }
+
+/* Margin Top */
+.u-mt-0 { margin-top: 0 !important; }
+.u-mt-xs { margin-top: var(--spacing-xs) !important; }
+.u-mt-sm { margin-top: var(--spacing-sm) !important; }
+.u-mt-md { margin-top: var(--spacing-md) !important; }
+.u-mt-lg { margin-top: var(--spacing-lg) !important; }
+.u-mt-xl { margin-top: var(--spacing-xl) !important; }
+.u-mt-xxl { margin-top: var(--spacing-xxl) !important; }
+
+/* Margin Bottom */
+.u-mb-0 { margin-bottom: 0 !important; }
+.u-mb-xs { margin-bottom: var(--spacing-xs) !important; }
+.u-mb-sm { margin-bottom: var(--spacing-sm) !important; }
+.u-mb-md { margin-bottom: var(--spacing-md) !important; }
+.u-mb-lg { margin-bottom: var(--spacing-lg) !important; }
+.u-mb-xl { margin-bottom: var(--spacing-xl) !important; }
+.u-mb-xxl { margin-bottom: var(--spacing-xxl) !important; }
+
+/* Add more utilities as needed (e.g., padding, flexbox helpers, etc.) */
