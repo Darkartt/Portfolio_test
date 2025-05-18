@@ -1,38 +1,274 @@
-/* Cyberpunk Theme Enhancements */
+/* ===== Color Variables ===== */
 :root {
     --neon-green: #00ff00;
     --cyber-black: #0a0a0a;
     --hud-blue: #00f7ff;
-    --glow-effect: 0 0 15px rgba(0, 255, 0, 0.4);
-  }
-  
-  .cyber-border {
-    border: 2px solid var(--neon-green);
-    position: relative;
+    --cyber-red: #ff003c;
+    --matrix-glow: rgba(0, 255, 0, 0.1);
+}
+
+/* ===== Navigation ===== */
+.cyber-nav {
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    /* Remove border line */
+    border-bottom: none;
+    /* Add subtle glow instead */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cyber-logo img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.cyber-logo:hover img {
+    transform: rotate(-15deg) scale(1.1);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+/* ===== Typography ===== */
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px var(--neon-green);
+}
+
+/* ===== Terminal Styles ===== */
+.cyber-terminal {
+    border: 3px solid var(--neon-green);
+    background: rgba(0, 10, 0, 0.9);
+    max-width: 800px;
+    margin: 15vh auto 0;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
+}
+
+.terminal-header {
+    padding: 1rem;
+    background: var(--cyber-black);
+    border-bottom: 2px solid var(--neon-green);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.red { background: var(--cyber-red); }
+.yellow { background: #ff0; }
+.green { background: var(--neon-green); }
+
+.terminal-body {
     padding: 2rem;
-    margin: 2rem 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: var(--neon-green);
+    line-height: 1.8;
+}
+
+/* ===== Service Cards ===== */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
     background: rgba(0, 0, 0, 0.7);
-  }
-  
-  .cyber-border::before {
-    content: '';
+    border: 2px solid var(--neon-green);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+/* Audit Section Styles */
+.audit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.audit-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--neon-green);
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.audit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.audit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.risk-level {
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.high {
+    background: var(--cyber-red);
+    color: white;
+}
+
+.findings-list {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.findings-list li {
+    margin: 0.5rem 0;
+}
+
+.audit-btn {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Modal Styles */
+.cyber-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: var(--cyber-black);
+    padding: 2rem;
+    border: 2px solid var(--neon-green);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.close-btn {
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(
-      45deg,
-      var(--neon-green),
-      transparent 50%,
-      var(--neon-green)
-    );
-    z-index: -1;
-    animation: border-glow 2s infinite;
-  }
-  
-  @keyframes border-glow {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-  }
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+/* Interactive Navigation */
+.nav-menu {
+    position: relative;
+}
+
+.cyber-link {
+    transition: all 0.3s ease;
+}
+
+.cyber-link:hover {
+    text-shadow: 0 0 15px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+/* Hover Effects */
+.service-card {
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) rotateZ(-1deg);
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);
+}
+
+/* Animated Loader */
+.cyber-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--neon-green);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    display: none;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Scroll Progress */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--neon-green);
+    z-index: 9998;
+    transition: width 0.3s ease;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+.glitch-effect {
+    animation: glitch 0.5s infinite;
+    position: relative;
+}
+
+.glitch-effect:hover {
+    text-shadow: 2px 0 var(--hud-blue), -2px 0 var(--cyber-red);
+}

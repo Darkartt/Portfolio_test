@@ -1,0 +1,41 @@
+:root {
+  /* Fonts */
+  --font-primary: 'Roboto Mono', monospace;
+  --font-secondary: 'Press Start 2P', cursive;
+
+  /* Colors - Dark Theme for Web3 Security Researcher */
+  --color-background: #0A0F0A; /* Very dark green/black */
+  --color-surface: #0F1A0F;   /* Slightly lighter for cards/surfaces */
+  --color-text-primary: #E0E0E0; /* Light grey for primary text */
+  --color-text-secondary: #A0A0A0; /* Medium grey for secondary text */
+  
+  --color-accent-primary: #00FF7F; /* Spring Green - a vibrant, techy green */
+  --color-accent-secondary: #00BFFF; /* Deep Sky Blue - for secondary accents if needed */
+
+  --color-border: rgba(0, 255, 127, 0.2); /* Subtle green border */
+
+  --color-success: #39FF14; /* Neon Green for success states */
+  --color-error: #FF3131;   /* Neon Red for error/high risk */
+  --color-warning: #FFFF33; /* Neon Yellow for warning */
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-xs: calc(var(--spacing-unit) * 0.5);  /* 4px */
+  --spacing-sm: var(--spacing-unit);             /* 8px */
+  --spacing-md: calc(var(--spacing-unit) * 2);   /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 3);   /* 24px */
+  --spacing-xl: calc(var(--spacing-unit) * 4);   /* 32px */
+  --spacing-xxl: calc(var(--spacing-unit) * 6);  /* 48px */
+
+  /* Borders */
+  --border-radius-sm: 3px;
+  --border-radius-md: 5px;
+
+  /* Shadows (subtle glow effects) */
+  --shadow-glow-accent: 0 0 10px rgba(0, 255, 127, 0.3), 0 0 20px rgba(0, 255, 127, 0.2);
+  --shadow-glow-accent-hover: 0 0 15px rgba(0, 255, 127, 0.5), 0 0 30px rgba(0, 255, 127, 0.3);
+
+  /* Transitions */
+  --transition-fast: all 0.2s ease-in-out;
+  --transition-medium: all 0.3s ease-in-out;
+}

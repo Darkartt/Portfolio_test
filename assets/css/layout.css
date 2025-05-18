@@ -1,0 +1,85 @@
+/* Background Visualization Containers */
+#blockchain-viz,
+#particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+#blockchain-viz {
+  z-index: 1; /* Lower z-index for blockchain viz */
+}
+
+#particles-container {
+  z-index: 2; /* Particles on top of blockchain viz, but behind content */
+}
+
+/* Ensure canvases within these containers are transparent if needed */
+#blockchain-viz canvas,
+#particles-container canvas {
+  background-color: transparent !important; /* Important to override potential defaults */
+}
+
+
+/* Main Content Wrapper */
+#content-wrapper {
+  position: relative; /* To allow z-indexing of child elements if needed */
+  z-index: 3; /* Ensure it's above background viz */
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll on content wrapper */
+}
+
+/* General Page Section Styling */
+.page-section {
+  padding: var(--spacing-xxl) var(--spacing-lg); /* Generous padding for sections */
+  min-height: 80vh; /* Ensure sections have some height, can be adjusted */
+  display: flex; /* Using flex to help center content vertically if needed */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For potential pseudo-elements or absolute positioned children */
+}
+
+/* Container for centering content within sections */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Standard max-width, can be adjusted */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-lg); /* Consistent padding with sections */
+  padding-right: var(--spacing-lg);
+}
+
+/* Specific layout for hero section if needed (often full viewport height) */
+.hero { /* Applied to #home section */
+  min-height: 100vh;
+  justify-content: center; /* Vertically center hero content */
+}
+
+/* Grid Layouts (can be expanded if more complex grids are needed) */
+.service-grid,
+.audit-grid {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+/* Default for single column on small screens, overridden by component styles for larger screens */
+.service-grid,
+.audit-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Responsive adjustments for containers or section padding if necessary */
+@media (max-width: 768px) {
+  .page-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
