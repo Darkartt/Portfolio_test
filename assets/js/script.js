@@ -207,38 +207,70 @@ class Portfolio {
       let charIndex = 0;
       let typingSpeed = 30; // milliseconds per character
       let lineDelay = 800; // milliseconds between lines
-      let sequenceDelay = 3000; // milliseconds between sequences
+      let sequenceDelay = 3000; // milliseconds between sequences (Adjusted pause)
 
       function type() {
         console.log(`Typing: Sequence ${sequenceIndex}, Line ${lineIndex}, Char ${charIndex}`); // Log typing progress
         if (sequenceIndex < messageSequences.length) {
           const currentSequence = messageSequences[sequenceIndex];
-          if (lineIndex < currentSequence.length) {
-            const currentLine = currentSequence[lineIndex];
-            if (charIndex < currentLine.length) {
-              // Append character
-              terminalOutput.textContent += currentLine.charAt(charIndex);
-              charIndex++;
-              setTimeout(type, typingSpeed);
-            } else {
-              // End of line, add newline and move to next line
-              terminalOutput.textContent += '\n';
-              lineIndex++;
-              charIndex = 0;
-              setTimeout(type, lineDelay);
+
+          // Check if it's the Security Tips or Facts sequence (assuming it's the second sequence, index 1)
+          if (sequenceIndex === 1) {
+            if (lineIndex < currentSequence.length) {
+              const currentLine = currentSequence[lineIndex];
+              if (charIndex < currentLine.length) {
+                // Type character
+                terminalOutput.textContent += currentLine.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+              } else {
+                // End of a tip/fact line, clear and move to the next tip/fact
+                setTimeout(() => {
+                  terminalOutput.textContent = ''; // Clear terminal for the next tip/fact
+                  lineIndex++;
+                  charIndex = 0;
+                  if (lineIndex < currentSequence.length) {
+                    type(); // Type the next tip/fact
+                  } else {
+                    // End of tips/facts sequence, move to a random next sequence
+                    setTimeout(() => {
+                      terminalOutput.textContent = ''; // Clear terminal before next sequence
+                      sequenceIndex = Math.floor(Math.random() * messageSequences.length);
+                      lineIndex = 0;
+                      type(); // Start the next random sequence
+                    }, sequenceDelay);
+                  }
+                }, sequenceDelay); // Pause after typing a tip/fact (Increased pause)
+              }
             }
           } else {
-            // End of sequence, clear terminal and move to next sequence
-            setTimeout(() => {
-              terminalOutput.textContent = ''; // Clear terminal
-              // Select a random sequence index
-              sequenceIndex = Math.floor(Math.random() * messageSequences.length);
-              lineIndex = 0;
-              type(); // Start the next sequence
-            }, sequenceDelay);
+            // Existing logic for other sequences (type all lines then move to next random sequence)
+            if (lineIndex < currentSequence.length) {
+              const currentLine = currentSequence[lineIndex];
+              if (charIndex < currentLine.length) {
+                // Append character
+                terminalOutput.textContent += currentLine.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+              } else {
+                // End of line, add newline and move to next line
+                terminalOutput.textContent += '\n';
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(type, lineDelay);
+              }
+            } else {
+              // End of sequence, clear terminal and move to next random sequence
+              setTimeout(() => {
+                terminalOutput.textContent = ''; // Clear terminal
+                sequenceIndex = Math.floor(Math.random() * messageSequences.length);
+                lineIndex = 0;
+                type(); // Start the next random sequence
+              }, sequenceDelay);
+            }
           }
         } else {
-          // All sequences shown (this block might be less relevant with random cycling, but keep for safety)
+          // This block should ideally not be reached with random cycling, but keep for safety
           // Select a random sequence index to restart
           sequenceIndex = Math.floor(Math.random() * messageSequences.length);
           lineIndex = 0;
