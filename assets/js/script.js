@@ -151,7 +151,22 @@ class Portfolio {
         [
           "> Tip: Always use OpenZeppelin's libraries for access control.",
           "> Fact: 34% of DeFi hacks in 2024 were due to flash loan exploits.",
-          "> Tip: Never hardcode private keys in your contracts."
+          "> Tip: Never hardcode private keys in your contracts.",
+          "> Tip: Always use multi-signature wallets for high-value contracts - 61% of 2024 hacks targeted single-key storage.",
+          "> Fact: State-sponsored groups stole $1.3B in crypto in 2024, primarily through private key compromises.",
+          "> Tip: Implement reentrancy guards - 23% of 2025 exploits used reentrancy vulnerabilities.",
+          "> Fact: Cross-chain bridge hacks decreased 66% in 2024 due to improved MPC implementations.",
+          "> Tip: Audit all third-party dependencies - $1.9M was lost through vulnerable GemPad contracts in 2024.",
+          "> Fact: 48% of 2025 DeFi losses stemmed from access control vulnerabilities.",
+          "> Tip: Use hardware wallet integration for transaction signing - prevents 92% of phishing attempts.",
+          "> Fact: Zero-knowledge proofs reduced oracle manipulation attacks by 37% in Q1 2025.",
+          "> Tip: Validate all external inputs - 18% of 2025 hacks exploited unverified user-supplied data.",
+          "> Fact: Projects with bug bounties experienced 64% fewer exploits than those without.",
+          "> Tip: Implement circuit breakers for sudden TVL drops - stopped $28M in potential losses in April 2025.",
+          "> Fact: 83% of successful hacks in 2025 exploited multiple vulnerabilities in sequence.",
+          "> Tip: Use static analysis tools before deployment - catches 71% of common vulnerability patterns.",
+          "> Fact: AI-powered monitoring systems detected 42% of intrusion attempts in 2025 within 3 minutes.",
+          "> Tip: Rotate admin keys quarterly - 57% of protocol takeovers used stale credentials."
         ],
         // Notable Vulnerabilities Detected (Anonymized)
         [
@@ -187,7 +202,7 @@ class Portfolio {
         ]
       ];
 
-      let sequenceIndex = 0;
+      let sequenceIndex = Math.floor(Math.random() * messageSequences.length); // Start with a random sequence
       let lineIndex = 0;
       let charIndex = 0;
       let typingSpeed = 30; // milliseconds per character
@@ -216,18 +231,16 @@ class Portfolio {
             // End of sequence, clear terminal and move to next sequence
             setTimeout(() => {
               terminalOutput.textContent = ''; // Clear terminal
-              sequenceIndex++;
+              // Select a random sequence index
+              sequenceIndex = Math.floor(Math.random() * messageSequences.length);
               lineIndex = 0;
-              // Loop back to the start if all sequences are shown
-              if (sequenceIndex >= messageSequences.length) {
-                sequenceIndex = 0;
-              }
               type(); // Start the next sequence
             }, sequenceDelay);
           }
         } else {
-          // All sequences shown, loop back to the first sequence
-          sequenceIndex = 0;
+          // All sequences shown (this block might be less relevant with random cycling, but keep for safety)
+          // Select a random sequence index to restart
+          sequenceIndex = Math.floor(Math.random() * messageSequences.length);
           lineIndex = 0;
           charIndex = 0;
           setTimeout(type, sequenceDelay); // Wait before starting the loop again
