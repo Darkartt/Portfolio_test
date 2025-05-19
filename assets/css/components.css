@@ -42,6 +42,28 @@
   color: var(--color-background);
 }
 
+/* === Ripple Effect === */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Ensure clicks pass through the ripple */
+  background-color: rgba(57, 255, 20, 0.5); /* Semi-transparent neon green */
+  animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+
 /* === Loader Component === */
 .loader {
   display: none; /* Hidden by default, JS will show it */
@@ -137,7 +159,7 @@
   font-family: var(--font-secondary); /* 'Press Start 2P' */
   font-size: 0.8rem; /* Slightly reduced font size */
   text-transform: uppercase;
-  color: var(--color-text-primary);
+  color: var(--color-accent-primary); /* Match section title color */
   padding: var(--spacing-xs) 0; /* Reduced padding */
   position: relative;
 }
@@ -177,6 +199,7 @@
 */
 .nav__link.button { /* Ensure nav links styled as buttons behave well */
     padding: var(--spacing-sm) var(--spacing-lg); /* Override .nav__link padding */
+    color: black; /* Explicitly black text for readability */
 }
 
 
@@ -309,12 +332,17 @@
 
 /* Optional: If service-card itself is a flex container for its content */
 /*
-.service-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.nav__menu--active .nav__link {
+  padding: var(--spacing-md) 0;
+  width: 100%;
+  text-align: center;
 }
 */
+
+/* Specific style for Get a Quote button text in navigation */
+.nav__link--cta.button {
+    color: black; /* Ensure black text for readability on the green button */
+}
 
 /* === Audit Grid Component === */
 .audit-grid {
@@ -395,6 +423,123 @@
 }
 
 .audit-card__finding-item::before {
+  content: '▹'; /* Custom bullet */
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
+}
+
+.audit-card__button {
+  /* Uses global .button styles */
+  margin-top: auto; /* Pushes button to bottom */
+  width: 100%; /* Make button full width of card */
+}
+
+/* === Testimonials Component === */
+.testimonials__content {
+  /* Placeholder for testimonial items */
+  /* Example:
+  display: grid;
+  gap: var(--spacing-lg);
+  */
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* === Footer Component === */
+.footer { /* .page-footer class is also on the HTML element for layout spacing */
+  background-color: var(--color-surface); /* Slightly different from main bg */
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  margin-top: var(--spacing-xxl); /* Ensure space above footer */
+}
+
+.footer__container {
+  /* Uses .container class from layout.css for width and centering */
+}
+
+.footer__copyright {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0; /* Remove default p margin */
+}
+
+/* Add more footer elements like social links if needed */
+/*
+.footer__social-links {
+  margin-top: var(--spacing-md);
+}
+.footer__social-link {
+  display: inline-block;
+  margin: 0 var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+.footer__social-link:hover {
+  color: var(--color-accent-primary);
+}
+*/
+
+/* === About Section Component === */
+.about { /* page-section class provides base padding */ }
+
+.about__container { /* Uses .container for width */ }
+
+.about__content {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about__content {
+    grid-template-columns: 1fr 2fr; /* Image | Text */
+  }
+}
+
+.about__image-container {
+  text-align: center;
+}
+
+.about__image {
+  max-width: 300px; /* Adjust as needed */
+  border-radius: 50%; /* Circular image */
+  border: 3px solid var(--color-accent-primary);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.about__text {
+  text-align: left;
+}
+
+.about__subheading {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.about__expertise-title {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  color: var(--color-accent-primary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about__expertise-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about__expertise-item {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.about__finding-item::before {
   content: '▹'; /* Custom bullet */
   position: absolute;
   left: 0;
@@ -723,7 +868,7 @@
 }
 
 .footer__column--logo .footer__logo-text { /* Specific for logo text if different from h2 */
-  font-size: 1.8rem; /* Adjust as needed */
+  font-size: 1.8rem;
   color: var(--color-accent-primary);
   margin-bottom: var(--spacing-xs);
 }
@@ -840,21 +985,21 @@
 */
 <environment_details>
 # VSCode Visible Files
-assets/js/script.js
+assets/css/components.css
 
 # VSCode Open Tabs
 assets/css/layout.css
 assets/js/main.js
 index.html
-assets/css/components.css
 assets/js/script.js
+assets/css/components.css
 assets/css/animations.css
 
 # Current Time
-5/19/2025, 5:31:05 PM (Europe/London, UTC+1:00)
+5/19/2025, 5:48:05 PM (Europe/London, UTC+1:00)
 
 # Context Window Usage
-766,411 / 1,048.576K tokens used (73%)
+910,007 / 1,048.576K tokens used (87%)
 
 # Current Mode
 ACT MODE
