@@ -74,3 +74,85 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* === Scroll Interaction Patterns === */
+
+/* 1. 3D Parallax Matrix */
+.parallax-3d-container {
+  perspective: 1000px; /* Creates the 3D space */
+  overflow-x: hidden; /* Prevent horizontal scroll issues */
+}
+
+.parallax-3d-layer {
+  transform-style: preserve-3d; /* Children participate in 3D space */
+  will-change: transform; /* Hint to the browser for hardware acceleration */
+}
+
+/* CSS Scroll Timeline for 3D Parallax (requires polyfill for wider support) */
+@supports (animation-timeline: scroll()) {
+  .parallax-3d-layer {
+    animation: parallax-3d linear forwards;
+    animation-timeline: scroll(root); /* Bind to the document scroll */
+  }
+
+  @keyframes parallax-3d {
+    0% { transform: translateZ(0) translateY(0); }
+    100% { transform: translateZ(-500px) translateY(100px); /* Adjust values for desired effect */ }
+  }
+}
+
+/* Progressive enhancement fallback for browsers without Scroll Timeline */
+/* Basic JS or simpler CSS transitions can be used as a fallback */
+
+
+/* 2. Velocity-Based Blur */
+.scroll-blur-element {
+  transition: filter 0.15s ease-out; /* Tailwind duration-[150ms] equivalent, ease-out for natural feel */
+  will-change: filter; /* Hint for performance */
+}
+
+/* CSS Scroll Timeline for Velocity Blur (requires polyfill) */
+@supports (animation-timeline: scroll()) {
+  .scroll-blur-element {
+    animation: blur-on-scroll linear forwards;
+    animation-timeline: scroll(root); /* Bind to the document scroll */
+  }
+
+  @keyframes blur-on-scroll {
+    0% { filter: blur(0px); }
+    50% { filter: blur(5px); /* Max blur at roughly half scroll */ }
+    100% { filter: blur(0px); }
+  }
+}
+
+/* Progressive enhancement fallback: No blur or a simple hover effect */
+
+
+/* 3. Dynamic Gradient Shadows */
+/* Applied directly via Tailwind utilities on the element */
+/* Example: shadow-[0_35px_60px_-15px_rgba(99,102,241,0.3)] transition-shadow duration-[150ms] hover:shadow-[0_45px_60px_-15px_rgba(99,102,241,0.45)] */
+/* Ensure these classes are applied to the relevant HTML elements */
+
+/* Reduced Motion Media Query */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-3d-layer,
+  .scroll-blur-element {
+    animation: none !important; /* Disable CSS animations */
+    transition: none !important; /* Disable CSS transitions */
+    filter: none !important; /* Remove blur */
+  }
+  /* Also ensure any JS animations respect this media query */
+}
+
+/* Performance Budget Annotations */
+/* The CSS Scroll Timeline and `will-change` help keep animations off the main thread. */
+/* Transition durations are kept short (150ms) to minimize main thread work on style updates. */
+/* Using Tailwind utilities for shadows leverages optimized CSS properties. */
+/* Intersection Observer (in JS) is used for triggering effects based on visibility, reducing unnecessary work. */
+/* content-visibility: auto (mentioned in plan) can be applied to containers to skip rendering offscreen content. */
+
+/* Accessibility Considerations */
+/* Reduced motion media query is crucial for users sensitive to motion. */
+/* Ensure sufficient contrast for elements with dynamic shadows. */
+/* Parallax effects should be subtle and not interfere with content readability. */
+/* Avoid using scroll interactions as the *only* way to reveal critical information. */

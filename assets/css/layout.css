@@ -30,6 +30,7 @@
   z-index: 3; /* Ensure it's above background viz */
   width: 100%;
   overflow-x: hidden; /* Prevent horizontal scroll on content wrapper */
+  padding-top: var(--spacing-xxl); /* Add padding to account for fixed navigation */
 }
 
 /* General Page Section Styling */
@@ -57,6 +58,11 @@
 .hero { /* Applied to #home section */
   min-height: 100vh;
   justify-content: center; /* Vertically center hero content */
+}
+
+.hero {
+  padding-top: var(--spacing-xxl); /* Increase top padding */
+  padding-bottom: var(--spacing-xxl); /* Increase bottom padding */
 }
 
 /* Grid Layouts (can be expanded if more complex grids are needed) */

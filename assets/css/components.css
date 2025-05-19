@@ -203,6 +203,7 @@
   width: 100%;
   max-width: 800px; /* Or adjust as needed */
   margin: 0 auto; /* Centered in its container (hero section) */
+  margin-top: calc(var(--spacing-unit) * 10); /* Increase space above the terminal further */
   overflow: hidden;
 }
 
@@ -508,7 +509,6 @@
   margin-bottom: var(--spacing-xs);
   padding-left: var(--spacing-md);
   position: relative;
-  color: var(--color-text-secondary);
 }
 
 .about__expertise-item::before {
@@ -525,7 +525,7 @@
 }
 
 .about__social-link {
-  font-size: 1.5rem; /* Icon size */
+  font-size: 1.5rem;
   color: var(--color-text-secondary);
   transition: var(--transition-fast);
 }
@@ -535,7 +535,6 @@
   color: var(--color-accent-primary);
   transform: scale(1.1);
 }
-
 
 /* === Portfolio Section Components === */
 .portfolio__filters {
@@ -839,3 +838,24 @@
   text-align: center;
 }
 */
+<environment_details>
+# VSCode Visible Files
+assets/js/script.js
+
+# VSCode Open Tabs
+assets/css/layout.css
+assets/js/main.js
+index.html
+assets/css/components.css
+assets/js/script.js
+assets/css/animations.css
+
+# Current Time
+5/19/2025, 5:31:05 PM (Europe/London, UTC+1:00)
+
+# Context Window Usage
+766,411 / 1,048.576K tokens used (73%)
+
+# Current Mode
+ACT MODE
+</environment_details>
