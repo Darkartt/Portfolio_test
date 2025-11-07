@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 250.5 95.2% 63.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 188.7 85.7% 39.2%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Custom font variables */
+    --font-geist-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+      Arial, sans-serif;
+    --font-geist-mono: 'Roboto Mono', 'Courier New', monospace;
+    --font-pixel: 'Press Start 2P', cursive;
+  }
+
+  .dark {
+    /* Dark mode colors - 0xDarkArt theme */
+    --background: 150 100% 3%;
+    --foreground: 0 0% 88%;
+    --card: 150 50% 6%;
+    --card-foreground: 0 0% 88%;
+    --popover: 150 50% 6%;
+    --popover-foreground: 0 0% 88%;
+    --primary: 146 100% 50%;
+    --primary-foreground: 150 100% 3%;
+    --secondary: 195 100% 50%;
+    --secondary-foreground: 150 100% 3%;
+    --muted: 150 30% 12%;
+    --muted-foreground: 0 0% 63%;
+    --accent: 146 100% 50%;
+    --accent-foreground: 150 100% 3%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 146 100% 50% / 0.2;
+    --input: 146 100% 50% / 0.2;
+    --ring: 146 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* Typography */
+  h1 {
+    @apply text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl;
+  }
+
+  h2 {
+    @apply text-3xl font-bold leading-snug tracking-tight md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold leading-normal tracking-tight md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  /* Cyber glow effect */
+  .cyber-glow {
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.3), 0 0 20px rgba(0, 255, 127, 0.2);
+  }
+
+  .cyber-glow-hover:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.5), 0 0 40px rgba(0, 255, 127, 0.3);
+  }
+
+  /* Container utility */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Grid utilities */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
