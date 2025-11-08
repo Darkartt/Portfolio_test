@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Shield, Search, Code, GraduationCap, ArrowRight } from 'lucide-react'
@@ -10,6 +11,17 @@ const iconMap = {
   'search': Search,
   'code': Code,
   'graduation-cap': GraduationCap,
+}
+
+// Map service IDs to their detail pages
+const getServiceLink = (serviceId: string): string => {
+  const linkMap: Record<string, string> = {
+    'smart-contract-audits': '/services/audits',
+    'code-reviews': '/services/development',
+    'security-research': '/contact',
+    'security-training': '/contact',
+  }
+  return linkMap[serviceId] || '/contact'
 }
 
 export function ServicesSection() {
@@ -101,13 +113,16 @@ export function ServicesSection() {
                       </ul>
 
                       {/* Learn More Button */}
-                      <button className="group/btn flex items-center gap-2 text-primary font-medium mt-6 hover:gap-3 transition-all">
+                      <Link
+                        href={getServiceLink(service.id)}
+                        className="group/btn flex items-center gap-2 text-primary font-medium mt-6 hover:gap-3 transition-all"
+                      >
                         Learn More
                         <ArrowRight
                           size={16}
                           className="group-hover/btn:translate-x-1 transition-transform"
                         />
-                      </button>
+                      </Link>
                     </div>
 
                     {/* Corner Decoration */}
