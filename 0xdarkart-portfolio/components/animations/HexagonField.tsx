@@ -1,17 +1,30 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 export function HexagonField() {
-  // Generate hexagon positions
-  const hexagons = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 60 + 40,
-    duration: Math.random() * 20 + 20,
-    delay: Math.random() * 5,
-  }))
+  const [hexagons, setHexagons] = useState<Array<{
+    id: number
+    x: number
+    y: number
+    size: number
+    duration: number
+    delay: number
+  }>>([])
+
+  // Generate hexagon positions only on client side to avoid hydration mismatch
+  useEffect(() => {
+    const generatedHexagons = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 60 + 40,
+      duration: Math.random() * 20 + 20,
+      delay: Math.random() * 5,
+    }))
+    setHexagons(generatedHexagons)
+  }, [])
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
