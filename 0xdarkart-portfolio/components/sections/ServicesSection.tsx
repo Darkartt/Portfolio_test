@@ -141,16 +141,13 @@ export function ServicesSection() {
             <p className="text-muted-foreground mb-6">
               Need a custom security solution? Let's discuss your project.
             </p>
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact')
-                if (element) element.scrollIntoView({ behavior: 'smooth' })
-              }}
+            <Link
+              href="/contact"
               className="px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 cyber-glow-hover font-medium inline-flex items-center gap-2"
             >
               Get a Custom Quote
               <ArrowRight size={20} />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

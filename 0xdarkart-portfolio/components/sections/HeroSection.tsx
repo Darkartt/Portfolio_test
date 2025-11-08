@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Shield, ArrowRight } from 'lucide-react'
 import { TERMINAL_PROMPTS } from '@/lib/constants'
@@ -71,13 +72,6 @@ export function HeroSection() {
     },
   }
 
-  const handleScroll = (id: string) => {
-    const element = document.querySelector(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section
       id="home"
@@ -125,8 +119,8 @@ export function HeroSection() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
             >
-              <button
-                onClick={() => handleScroll('#portfolio')}
+              <Link
+                href="/portfolio"
                 className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 cyber-glow-hover font-medium flex items-center gap-2"
               >
                 View My Work
@@ -134,13 +128,13 @@ export function HeroSection() {
                   size={20}
                   className="group-hover:translate-x-1 transition-transform"
                 />
-              </button>
-              <button
-                onClick={() => handleScroll('#contact')}
+              </Link>
+              <Link
+                href="/contact"
                 className="px-8 py-4 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors font-medium"
               >
                 Request a Quote
-              </button>
+              </Link>
             </motion.div>
           </div>
 
