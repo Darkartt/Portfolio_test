@@ -85,7 +85,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="md:hidden p-3 text-foreground hover:text-primary transition-colors touch-manipulation"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,7 +108,7 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  'block text-base font-medium transition-colors py-2',
+                  'block text-base font-medium transition-colors py-3 touch-manipulation',
                   isActive(link.href) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                 )}
               >
@@ -118,7 +118,7 @@ export function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-base font-medium"
+              className="block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-base font-medium touch-manipulation"
             >
               Get a Quote
             </Link>
