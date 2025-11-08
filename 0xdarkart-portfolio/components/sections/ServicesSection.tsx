@@ -6,10 +6,10 @@ import { Shield, Search, Code, GraduationCap, ArrowRight } from 'lucide-react'
 import { services } from '@/lib/data/services'
 
 const iconMap = {
-  Shield,
-  Search,
-  Code,
-  GraduationCap,
+  'shield': Shield,
+  'search': Search,
+  'code': Code,
+  'graduation-cap': GraduationCap,
 }
 
 export function ServicesSection() {

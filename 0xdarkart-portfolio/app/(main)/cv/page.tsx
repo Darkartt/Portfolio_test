@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Download, Mail, MapPin, Calendar, ExternalLink } from 'lucide-react'
-import { SITE_CONFIG } from '@/lib/constants'
+import { Mail, Calendar, ExternalLink } from 'lucide-react'
 import { skillCategories } from '@/lib/data/skills'
 import { projects } from '@/lib/data/projects'
 
@@ -21,25 +20,9 @@ export default function CVPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Curriculum <span className="text-gradient">Vitae</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-6">
+            <p className="text-xl text-muted-foreground">
               Web3 Security Researcher & Full-Stack Developer
             </p>
-
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-8">
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="text-primary" />
-                {SITE_CONFIG.author.email}
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin size={16} className="text-primary" />
-                Remote
-              </div>
-            </div>
-
-            <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all font-medium inline-flex items-center gap-2">
-              <Download size={20} />
-              Download PDF
-            </button>
           </div>
 
           {/* Summary */}
