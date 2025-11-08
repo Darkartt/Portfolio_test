@@ -14,13 +14,6 @@ export function Footer() {
     { icon: Send, href: SITE_CONFIG.links.telegram, label: 'Telegram' },
   ]
 
-  const handleNavClick = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur-sm">
       <div className="container-custom py-12 md:py-16">
@@ -56,10 +49,6 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleNavClick(link.href)
-                    }}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
@@ -73,10 +62,38 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">Services</h4>
             <ul className="space-y-2">
-              <li className="text-sm text-muted-foreground">Smart Contract Audits</li>
-              <li className="text-sm text-muted-foreground">Security Research</li>
-              <li className="text-sm text-muted-foreground">Code Reviews</li>
-              <li className="text-sm text-muted-foreground">Security Training</li>
+              <li>
+                <Link
+                  href="/services/audits"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Smart Contract Audits
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Security Research
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Code Reviews
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Security Training
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

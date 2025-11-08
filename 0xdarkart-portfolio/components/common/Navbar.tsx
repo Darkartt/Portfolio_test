@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/cn'
@@ -10,6 +11,7 @@ import { cn } from '@/lib/cn'
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +21,10 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (href: string) => {
-    setIsOpen(false)
-    // Smooth scroll to section
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+  const isActive = (href: string) => {
+    if (href === '/' && pathname === '/') return true
+    if (href !== '/' && pathname.startsWith(href)) return true
+    return false
   }
 
   return (
@@ -40,14 +39,7 @@ export function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('#home')
-            }}
-            className="flex items-center gap-2 group"
-          >
+          <Link href="/" className="flex items-center gap-2 group">
             <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform group-hover:scale-110">
               <Image
                 src="/images/logos/home-button.png"
@@ -65,22 +57,24 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick(link.href)
-                }}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
+                className={cn(
+                  'text-sm font-medium transition-colors relative group',
+                  isActive(link.href)
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-primary'
+                )}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                <span
+                  className={cn(
+                    'absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300',
+                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                  )}
+                />
               </Link>
             ))}
             <Link
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault()
-                handleNavClick('#contact')
-              }}
+              href="/contact"
               className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium cyber-glow-hover"
             >
               Get a Quote
@@ -111,21 +105,18 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick(link.href)
-                }}
-                className="block text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  'block text-base font-medium transition-colors py-2',
+                  isActive(link.href) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                )}
               >
                 {link.label}
               </Link>
             ))}
             <Link
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault()
-                handleNavClick('#contact')
-              }}
+              href="/contact"
+              onClick={() => setIsOpen(false)}
               className="block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-base font-medium"
             >
               Get a Quote

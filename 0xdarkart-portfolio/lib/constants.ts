@@ -22,10 +22,11 @@ export const SITE_CONFIG = {
 
 // Navigation Links
 export const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/cv', label: 'CV' },
 ]
 
 // Contact Form Configuration
