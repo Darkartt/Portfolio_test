@@ -70,6 +70,7 @@ export function AboutSection() {
                     src="/images/profile-placeholder.jpg"
                     alt="0xDarkArt Profile"
                     fill
+                    sizes="(max-width: 768px) 100vw, 448px"
                     className="object-cover"
                   />
                   {/* Overlay */}

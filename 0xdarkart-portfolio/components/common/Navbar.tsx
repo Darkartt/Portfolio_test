@@ -45,6 +45,7 @@ export function Navbar() {
                 src="/images/logos/home-button.png"
                 alt="0xDarkArt Logo"
                 fill
+                sizes="(max-width: 768px) 40px, 48px"
                 className="object-contain"
               />
             </div>
