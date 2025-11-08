@@ -46,27 +46,6 @@ export function AnimatedGrid() {
         ctx.stroke()
       }
 
-      // Animated pulsing lines
-      const time = Date.now() / 1000
-      const pulseX = Math.floor((Math.sin(time) * 0.5 + 0.5) * (canvas.width / gridSize)) * gridSize
-      const pulseY = Math.floor((Math.cos(time * 0.7) * 0.5 + 0.5) * (canvas.height / gridSize)) * gridSize
-
-      // Vertical pulse
-      ctx.beginPath()
-      ctx.moveTo(pulseX, 0)
-      ctx.lineTo(pulseX, canvas.height)
-      ctx.strokeStyle = 'rgba(0, 255, 127, 0.2)'
-      ctx.lineWidth = 2
-      ctx.stroke()
-
-      // Horizontal pulse
-      ctx.beginPath()
-      ctx.moveTo(0, pulseY)
-      ctx.lineTo(canvas.width, pulseY)
-      ctx.strokeStyle = 'rgba(0, 255, 127, 0.2)'
-      ctx.lineWidth = 2
-      ctx.stroke()
-
       // Slow scroll effect
       offset += 0.1
       if (offset >= gridSize) offset = 0
