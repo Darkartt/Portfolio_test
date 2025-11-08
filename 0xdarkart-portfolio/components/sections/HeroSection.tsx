@@ -9,6 +9,19 @@ export function HeroSection() {
   const [terminalText, setTerminalText] = useState('')
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+
+  // Hide scroll indicator when user starts scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScrollIndicator(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     let currentText = ''
@@ -187,16 +200,19 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-primary rounded-full animate-bounce" />
-        </div>
-      </motion.div>
+      {showScrollIndicator && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-primary rounded-full animate-bounce" />
+          </div>
+        </motion.div>
+      )}
     </section>
   )
 }
